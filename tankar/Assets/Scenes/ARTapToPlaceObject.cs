@@ -9,10 +9,12 @@ public class ARTapToPlaceObject : MonoBehaviour
 {
     public GameObject objectToPlace;
     public GameObject placementIndicator;
+    public GameObject terrainToPlace;
 
     private ARRaycastManager arOrigin;
     private Pose placementPose;
     private bool placementPoseIsValid = false;
+    private bool terrainPlaced = false;
 
     void Start()
     {
@@ -25,8 +27,18 @@ public class ARTapToPlaceObject : MonoBehaviour
         UpdatePlacementIndicator();
 
         if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
-            PlaceObject();
+            if (!terrainPlaced) {
+                PlaceTerrain();
+                terrainPlaced = true;
+            } else {
+                PlaceObject();
+            }
         }
+    }
+
+    private void PlaceTerrain()
+    {
+        Instantiate(terrainToPlace, placementPose.position, placementPose.rotation);
     }
 
     private void PlaceObject()
