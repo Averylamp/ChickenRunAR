@@ -1,27 +1,40 @@
 # TankAR Changelog
+---
 
 ### Week of Sept 8 (Mon 2 - Sun 7)
 
-- The decision to use Unity was made
-- Repo created
-- ARFoundation in Unity was selected
-- The initial development goals start with the game in 2D first, then bring it to 3D then bring it to AR 
+| Actions | Goals | Problems |
+| ------  | ----- | -------- |
+| The decision to use Unity with AR Foundation was made | Choosing the platform would affect all future development as well as AR capabilities | Unfamiliarity with Unity (None of us were advanced Unity users) |
+| Decided upon the development strategy | We decided we wanted to split work into two major parts, one being gameplay and the other AR integration.  For gameplay development, we aim to start with a 3D game played in 2 dimensions, then expanding it to 3 dimensions, then lastly integrating it with AR.  On the AR integration part, we wanted to start experimenting with AR integration asap to get used to how it works and understand its capabilities | |
 
+---
 ### Week of Sept 15
 
-- Ability to place objects on flat surfaces in AR
-- Ability to set an AR plane and lock it for game use
-- Tank asset found and added (using [Tanks Tutorial](https://learn.unity.com/project/tanks-tutorial))
-- Simple Gravity added
+| Actions | Goals | Problems |
+| ------  | ----- | -------- |
+| AR: Figured out how to place objects on flat surfaces in an AR world | To get started with AR and be able to place objects in the real worls | Plane detection is mediocre and the AR camera for determining planes changes the distance or location of the planes often |
+| AR: Set a plane and lock it for use | To set a gameplay plane that does not move after being set | next step: Sync plane/worldspace between devices |
+| Found asset collection to use | We aren't artists so we found an asset collection to use for 3D objects so we can focus on gameplay (Assets from [Tanks Tutorial](https://learn.unity.com/project/tanks-tutorial)) | Assets look great |
+| Gameplay: Created the Tank Asset | Create a tank asset to be used by each player | Was pretty straighforward with the tutorial |
+| Gameplay: Added Simple Physics | Create a mock world with physics to simplify testing |  |
 
+---
 ### Week of Sept 22
 
+| Actions | Goals | Problems |
+| ------  | ----- | -------- |
+
 -
 -
 -
 -
 
+---
 ### Week of Sept 29
+
+| Actions | Goals | Problems |
+| ------  | ----- | -------- |
 
 -
 -
