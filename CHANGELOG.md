@@ -20,7 +20,7 @@
 | Gameplay: Added Simple Physics | Create a mock world with physics to simplify testing |  |
 | Gameplay: Added Tank Movement | Allows the tank to move and drive around with key controls |  |
 
-Notes / Next Steps: 
+#### Notes / Next Steps: 
 - Gameplay: Add Canvas UI for controls to angle and position tank turret
 - Gameplay: Tank Shooting Mechanic
 - Gameplay: Tank Health
@@ -33,8 +33,7 @@ Notes / Next Steps:
 | Actions | Goals | Problems |
 | ------  | ----- | -------- |
 
-Notes:
--
+#### Notes / Next Steps: 
 -
 -
 -
@@ -45,6 +44,7 @@ Notes:
 | Actions | Goals | Problems |
 | ------  | ----- | -------- |
 
+#### Notes / Next Steps: 
 -
 -
 -
