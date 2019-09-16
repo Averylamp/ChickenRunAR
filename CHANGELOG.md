@@ -18,6 +18,14 @@
 | Found asset collection to use | We aren't artists so we found an asset collection to use for 3D objects so we can focus on gameplay (Assets from [Tanks Tutorial](https://learn.unity.com/project/tanks-tutorial)) | Assets look great |
 | Gameplay: Created the Tank Asset | Create a tank asset to be used by each player | Was pretty straighforward with the tutorial |
 | Gameplay: Added Simple Physics | Create a mock world with physics to simplify testing |  |
+| Gameplay: Added Tank Movement | Allows the tank to move and drive around with key controls |  |
+
+Notes / Next Steps: 
+- Gameplay: Add Canvas UI for controls to angle and position tank turret
+- Gameplay: Tank Shooting Mechanic
+- Gameplay: Tank Health
+- Gameplay: HUD for stats
+- AR: Syncing AR worlds between devices
 
 ---
 ### Week of Sept 22
@@ -25,6 +33,7 @@
 | Actions | Goals | Problems |
 | ------  | ----- | -------- |
 
+Notes:
 -
 -
 -
