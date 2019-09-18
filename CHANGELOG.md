@@ -19,6 +19,7 @@
 | Gameplay: Created the Tank Asset | Create a tank asset to be used by each player | Was pretty straighforward with the tutorial |
 | Gameplay: Added Simple Physics | Create a mock world with physics to simplify testing |  |
 | Gameplay: Added Tank Movement | Allows the tank to move and drive around with key controls |  |
+| Development: Made a seemless transition from AR development in Unity to device. Edited scales and groundwork is set. | |
 
 #### Notes / Next Steps: 
 - Gameplay: Add Canvas UI for controls to angle and position tank turret
