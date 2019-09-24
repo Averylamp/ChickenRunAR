@@ -1,14 +1,31 @@
 # TankAR Changelog
+
 ---
 
-### Week of Sept 8 (Mon 2 - Sun 7)
+### Week of Sept 29
 
 | Actions | Goals | Problems |
 | ------  | ----- | -------- |
-| The decision to use Unity with AR Foundation was made | Choosing the platform would affect all future development as well as AR capabilities | Unfamiliarity with Unity (None of us were advanced Unity users) |
-| Decided upon the development strategy | We decided we wanted to split work into two major parts, one being gameplay and the other AR integration.  For gameplay development, we aim to start with a 3D game played in 2 dimensions, then expanding it to 3 dimensions, then lastly integrating it with AR.  On the AR integration part, we wanted to start experimenting with AR integration asap to get used to how it works and understand its capabilities | |
+
+#### Notes / Next Steps: 
+-
+-
+-
+-
 
 ---
+
+### Week of Sept 22
+
+| Actions | Goals | Problems |
+| ------  | ----- | -------- |
+
+#### Notes / Next Steps: 
+-
+
+
+---
+
 ### Week of Sept 15
 
 | Actions | Goals | Problems |
@@ -29,24 +46,12 @@
 - AR: Syncing AR worlds between devices
 
 ---
-### Week of Sept 22
+
+### Week of Sept 8 (Mon 2 - Sun 7)
 
 | Actions | Goals | Problems |
 | ------  | ----- | -------- |
-
-#### Notes / Next Steps: 
--
--
--
+| The decision to use Unity with AR Foundation was made | Choosing the platform would affect all future development as well as AR capabilities | Unfamiliarity with Unity (None of us were advanced Unity users) |
+| Decided upon the development strategy | We decided we wanted to split work into two major parts, one being gameplay and the other AR integration.  For gameplay development, we aim to start with a 3D game played in 2 dimensions, then expanding it to 3 dimensions, then lastly integrating it with AR.  On the AR integration part, we wanted to start experimenting with AR integration asap to get used to how it works and understand its capabilities | |
 
 ---
-### Week of Sept 29
-
-| Actions | Goals | Problems |
-| ------  | ----- | -------- |
-
-#### Notes / Next Steps: 
--
--
--
--
