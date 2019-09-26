@@ -24,7 +24,7 @@ public class TankShooting : MonoBehaviour
   private void OnEnable()
   {
     m_CurrentLaunchForce = m_MinLaunchForce;
-    m_AimSlider.value = m_MinLaunchForce;
+    // m_AimSlider.value = m_MinLaunchForce;
   }
 
 
