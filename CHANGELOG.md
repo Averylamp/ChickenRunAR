@@ -6,9 +6,10 @@
 
 | Actions | Goals | Problems |
 | ------  | ----- | -------- |
+| Gameplay: Got clicks to work in both Editor and device.  | Goal is to have a seemless interface of clicks both on the UI canvas and off the UI canvas (in the real world). | Need to optimize the main script and make it modular. TODO: confirm implementation is as fast as Unity OnClick() callbacks. |
 
 #### Notes / Next Steps: 
--
+- Gameplay: Speed up / clean up click/UI interface.
 -
 -
 -
