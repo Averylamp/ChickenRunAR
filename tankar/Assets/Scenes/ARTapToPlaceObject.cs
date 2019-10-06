@@ -29,18 +29,20 @@ public class ARTapToPlaceObject : MonoBehaviour
         // Handle clicks in the real world.
         // TODO(ethan): only execute this if not clicking on UI button, etc.
         if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && !ClickLogic.OnUI()) {
-            if (!terrainPlaced) {
-                PlaceTerrain();
-                terrainPlaced = true;
-            } else {
-                PlaceObject();
-            }
+            // if (!terrainPlaced) {
+            //     PlaceTerrain();
+            //     terrainPlaced = true;
+            // } else {
+            //     PlaceObject();
+            // }
+            PlaceTerrain();
         }
     }
 
     private void PlaceTerrain()
     {
-        Instantiate(terrainToPlace, placementPose.position, placementPose.rotation);
+        // Instantiate(terrainToPlace, placementPose.position, placementPose.rotation);
+        terrainToPlace.transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
     }
 
     private void PlaceObject()
