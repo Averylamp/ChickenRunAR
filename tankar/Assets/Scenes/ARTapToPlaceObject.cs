@@ -26,7 +26,9 @@ public class ARTapToPlaceObject : MonoBehaviour
         UpdatePlacementPose();
         UpdatePlacementIndicator();
 
-        if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
+        // Handle clicks in the real world.
+        // TODO(ethan): only execute this if not clicking on UI button, etc.
+        if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && !ClickLogic.OnUI()) {
             if (!terrainPlaced) {
                 PlaceTerrain();
                 terrainPlaced = true;
