@@ -546,7 +546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: 598fb4fbcd06e5e4d9221bd46f8d536c, type: 3}
       propertyPath: forwardAccelerationMultiplier
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 598fb4fbcd06e5e4d9221bd46f8d536c, type: 3}
@@ -1275,7 +1275,7 @@ Transform:
   m_GameObject: {fileID: 6739985275748940446}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 19, y: 19, z: 19}
   m_Children: []
   m_Father: {fileID: 6739985274832404405}
   m_RootOrder: 0

@@ -163,7 +163,7 @@ public class ChickenCharacter : MonoBehaviour
       transform.RotateAround(transform.position, Vector3.up, Time.deltaTime * yawVelocity * 100f);
 
       forwardSpeed = Mathf.Lerp(forwardSpeed, 0f, Time.deltaTime * speedDumpingTime);
-      forwardSpeed = Mathf.Clamp(forwardSpeed + forwardAcceleration * forwardAccelerationMultiplier * Time.deltaTime, 0f, maxForwardSpeed);
+      forwardSpeed = Mathf.Clamp(forwardSpeed + forwardAcceleration * Time.deltaTime, 0f, maxForwardSpeed);
       upDown = Mathf.Lerp(upDown, 0, Time.deltaTime * 3f);
 
     }
