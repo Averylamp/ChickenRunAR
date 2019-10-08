@@ -8,6 +8,7 @@
 | ------  | ----- | -------- |
 | Gameplay: Chicken Asset Picked | We wanted to pick a chicken that we would be using for the game. Ideally the chicken would be animated and reduce the amount of work we had to put into the asset to get it to function for our needs | We had issues working with pre-rigged assets as the animator for those assets often had to be tweaked to get it to function properly within our constraints. |
 | Gameplay: Fencing | With the new ChickenRunAR concept, we needed a fenced area where the chicken can run around in | Oclusion makes the area look bad.  We need an empty open space to play the game |
+| Augmented Reality | Updated game to reflect sizes of chicken in Unity and real world for fast development. | We can’t deal with occlusioks in any fast way. This requires the camera. Deploying is still pretty slow for testing.
 
 #### Notes / Next Steps: 
 - Gameplay: Chicken Controller
