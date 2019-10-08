@@ -14,6 +14,10 @@ public class HumanController : MonoBehaviour
   private float m_MovementVerticalInputValue;
 
 
+  private void Awake()
+  {
+    m_Rigidbody = GetComponent<Rigidbody>();
+  }
 
   private void Start()
   {
@@ -36,7 +40,7 @@ public class HumanController : MonoBehaviour
 
   private void Move()
   {
-    Vector3 movement = transform.forward * m_MovementHorizontalInputValue * m_Speed * Time.deltaTime + transform.forward * m_MovementVerticalInputValue * m_Speed * Time.deltaTime;
+    Vector3 movement = transform.forward * m_MovementHorizontalInputValue * m_Speed * Time.deltaTime + transform.left * m_MovementVerticalInputValue * m_Speed * Time.deltaTime;
     m_Rigidbody.MovePosition(m_Rigidbody.position + movement);
   }
 
