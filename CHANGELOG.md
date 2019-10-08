@@ -2,6 +2,32 @@
 
 ---
 
+### Week of October 13
+
+| Actions | Goals | Problems |
+| ------  | ----- | -------- |
+| Gameplay: Chicken Asset Picked | We wanted to pick a chicken that we would be using for the game. Ideally the chicken would be animated and reduce the amount of work we had to put into the asset to get it to function for our needs | We had issues working with pre-rigged assets as the animator for those assets often had to be tweaked to get it to function properly within our constraints. |
+| Gameplay: Fencing | With the new ChickenRunAR concept, we needed a fenced area where the chicken can run around in | Oclusion makes the area look bad.  We need an empty open space to play the game |
+
+#### Notes / Next Steps: 
+- Gameplay: Chicken Controller
+- Augmented Reality: Chicken Fly animation
+- Augmented Reality: closed fencing
+
+---
+
+### Week of October 6
+
+| Actions | Goals | Problems |
+| ------  | ----- | -------- |
+| Gameplay: ChickenRunAR concept | We started redesigning our game from scratch because we decided that Tanks in AR had already been done and we wanted to build something that used more of the features around Augmented Reality.  We believed that a fun game would be to simply have to catch a chicken in Augmented reality.  It uses outside space well and we believe it will be more fun to build and play | |
+
+#### Notes / Next Steps: 
+- Gameplay: Update Design Docs for new specs of ChickenRunAR
+- Augmented Reality: Find Assets
+
+---
+
 ### Week of Sept 29
 
 | Actions | Goals | Problems |
@@ -10,9 +36,6 @@
 
 #### Notes / Next Steps: 
 - Gameplay: Speed up / clean up click/UI interface.
--
--
--
 
 ---
 
@@ -21,10 +44,6 @@
 | Actions | Goals | Problems |
 | ------  | ----- | -------- |
 | Development: Made a seemless transition from AR development in Unity to device. Edited scales and groundwork is set. | Speed up development process. | The UI layout / buttons don't quite overlay as expected on the device.
-
-#### Notes / Next Steps: 
--
-
 
 ---
 

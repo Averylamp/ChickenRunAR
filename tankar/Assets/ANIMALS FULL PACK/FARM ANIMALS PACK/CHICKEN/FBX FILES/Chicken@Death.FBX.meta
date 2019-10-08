@@ -1,0 +1,300 @@
+fileFormatVersion: 2
+guid: 2cfb41c43f8042f4da913168426473e1
+timeCreated: 1504237024
+licenseType: Store
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: CHICKEN_
+    100004: CHICKEN_ Head
+    100006: CHICKEN_ L Calf
+    100008: CHICKEN_ L Clavicle
+    100010: CHICKEN_ L Foot
+    100012: CHICKEN_ L Forearm
+    100014: CHICKEN_ L Hand
+    100016: CHICKEN_ L HorseLink
+    100018: CHICKEN_ L Thigh
+    100020: CHICKEN_ L Toe0
+    100022: CHICKEN_ L Toe01
+    100024: CHICKEN_ L Toe1
+    100026: CHICKEN_ L Toe11
+    100028: CHICKEN_ L Toe2
+    100030: CHICKEN_ L Toe21
+    100032: CHICKEN_ L Toe3
+    100034: CHICKEN_ L Toe31
+    100036: CHICKEN_ L UpperArm
+    100038: CHICKEN_ Neck
+    100040: CHICKEN_ Neck1
+    100042: CHICKEN_ Neck2
+    100044: CHICKEN_ Pelvis
+    100046: CHICKEN_ Queue de cheval 1
+    100048: CHICKEN_ R Calf
+    100050: CHICKEN_ R Clavicle
+    100052: CHICKEN_ R Foot
+    100054: CHICKEN_ R Forearm
+    100056: CHICKEN_ R Hand
+    100058: CHICKEN_ R HorseLink
+    100060: CHICKEN_ R Thigh
+    100062: CHICKEN_ R Toe0
+    100064: CHICKEN_ R Toe01
+    100066: CHICKEN_ R Toe1
+    100068: CHICKEN_ R Toe11
+    100070: CHICKEN_ R Toe2
+    100072: CHICKEN_ R Toe21
+    100074: CHICKEN_ R Toe3
+    100076: CHICKEN_ R Toe31
+    100078: CHICKEN_ R UpperArm
+    100080: CHICKEN_ Spine
+    100082: CHICKEN_ Tail
+    100084: root
+    400000: //RootNode
+    400002: CHICKEN_
+    400004: CHICKEN_ Head
+    400006: CHICKEN_ L Calf
+    400008: CHICKEN_ L Clavicle
+    400010: CHICKEN_ L Foot
+    400012: CHICKEN_ L Forearm
+    400014: CHICKEN_ L Hand
+    400016: CHICKEN_ L HorseLink
+    400018: CHICKEN_ L Thigh
+    400020: CHICKEN_ L Toe0
+    400022: CHICKEN_ L Toe01
+    400024: CHICKEN_ L Toe1
+    400026: CHICKEN_ L Toe11
+    400028: CHICKEN_ L Toe2
+    400030: CHICKEN_ L Toe21
+    400032: CHICKEN_ L Toe3
+    400034: CHICKEN_ L Toe31
+    400036: CHICKEN_ L UpperArm
+    400038: CHICKEN_ Neck
+    400040: CHICKEN_ Neck1
+    400042: CHICKEN_ Neck2
+    400044: CHICKEN_ Pelvis
+    400046: CHICKEN_ Queue de cheval 1
+    400048: CHICKEN_ R Calf
+    400050: CHICKEN_ R Clavicle
+    400052: CHICKEN_ R Foot
+    400054: CHICKEN_ R Forearm
+    400056: CHICKEN_ R Hand
+    400058: CHICKEN_ R HorseLink
+    400060: CHICKEN_ R Thigh
+    400062: CHICKEN_ R Toe0
+    400064: CHICKEN_ R Toe01
+    400066: CHICKEN_ R Toe1
+    400068: CHICKEN_ R Toe11
+    400070: CHICKEN_ R Toe2
+    400072: CHICKEN_ R Toe21
+    400074: CHICKEN_ R Toe3
+    400076: CHICKEN_ R Toe31
+    400078: CHICKEN_ R UpperArm
+    400080: CHICKEN_ Spine
+    400082: CHICKEN_ Tail
+    400084: root
+    7400000: Death
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 0
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Death
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 38
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: root
+        weight: 1
+      - path: root/CHICKEN_
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ L Thigh
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ L Thigh/CHICKEN_ L Calf
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ L Thigh/CHICKEN_ L Calf/CHICKEN_
+          L HorseLink
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ L Thigh/CHICKEN_ L Calf/CHICKEN_
+          L HorseLink/CHICKEN_ L Foot
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ L Thigh/CHICKEN_ L Calf/CHICKEN_
+          L HorseLink/CHICKEN_ L Foot/CHICKEN_ L Toe0
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ L Thigh/CHICKEN_ L Calf/CHICKEN_
+          L HorseLink/CHICKEN_ L Foot/CHICKEN_ L Toe0/CHICKEN_ L Toe01
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ L Thigh/CHICKEN_ L Calf/CHICKEN_
+          L HorseLink/CHICKEN_ L Foot/CHICKEN_ L Toe1
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ L Thigh/CHICKEN_ L Calf/CHICKEN_
+          L HorseLink/CHICKEN_ L Foot/CHICKEN_ L Toe1/CHICKEN_ L Toe11
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ L Thigh/CHICKEN_ L Calf/CHICKEN_
+          L HorseLink/CHICKEN_ L Foot/CHICKEN_ L Toe2
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ L Thigh/CHICKEN_ L Calf/CHICKEN_
+          L HorseLink/CHICKEN_ L Foot/CHICKEN_ L Toe2/CHICKEN_ L Toe21
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ L Thigh/CHICKEN_ L Calf/CHICKEN_
+          L HorseLink/CHICKEN_ L Foot/CHICKEN_ L Toe3
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ L Thigh/CHICKEN_ L Calf/CHICKEN_
+          L HorseLink/CHICKEN_ L Foot/CHICKEN_ L Toe3/CHICKEN_ L Toe31
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ R Thigh
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ R Thigh/CHICKEN_ R Calf
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ R Thigh/CHICKEN_ R Calf/CHICKEN_
+          R HorseLink
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ R Thigh/CHICKEN_ R Calf/CHICKEN_
+          R HorseLink/CHICKEN_ R Foot
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ R Thigh/CHICKEN_ R Calf/CHICKEN_
+          R HorseLink/CHICKEN_ R Foot/CHICKEN_ R Toe0
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ R Thigh/CHICKEN_ R Calf/CHICKEN_
+          R HorseLink/CHICKEN_ R Foot/CHICKEN_ R Toe0/CHICKEN_ R Toe01
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ R Thigh/CHICKEN_ R Calf/CHICKEN_
+          R HorseLink/CHICKEN_ R Foot/CHICKEN_ R Toe1
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ R Thigh/CHICKEN_ R Calf/CHICKEN_
+          R HorseLink/CHICKEN_ R Foot/CHICKEN_ R Toe1/CHICKEN_ R Toe11
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ R Thigh/CHICKEN_ R Calf/CHICKEN_
+          R HorseLink/CHICKEN_ R Foot/CHICKEN_ R Toe2
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ R Thigh/CHICKEN_ R Calf/CHICKEN_
+          R HorseLink/CHICKEN_ R Foot/CHICKEN_ R Toe2/CHICKEN_ R Toe21
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ R Thigh/CHICKEN_ R Calf/CHICKEN_
+          R HorseLink/CHICKEN_ R Foot/CHICKEN_ R Toe3
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ R Thigh/CHICKEN_ R Calf/CHICKEN_
+          R HorseLink/CHICKEN_ R Foot/CHICKEN_ R Toe3/CHICKEN_ R Toe31
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ Spine
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ Spine/CHICKEN_ L Clavicle
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ Spine/CHICKEN_ L Clavicle/CHICKEN_
+          L UpperArm
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ Spine/CHICKEN_ L Clavicle/CHICKEN_
+          L UpperArm/CHICKEN_ L Forearm
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ Spine/CHICKEN_ L Clavicle/CHICKEN_
+          L UpperArm/CHICKEN_ L Forearm/CHICKEN_ L Hand
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ Spine/CHICKEN_ Neck
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ Spine/CHICKEN_ Neck/CHICKEN_
+          Neck1
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ Spine/CHICKEN_ Neck/CHICKEN_
+          Neck1/CHICKEN_ Neck2
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ Spine/CHICKEN_ Neck/CHICKEN_
+          Neck1/CHICKEN_ Neck2/CHICKEN_ Head
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ Spine/CHICKEN_ Neck/CHICKEN_
+          Neck1/CHICKEN_ Neck2/CHICKEN_ Head/CHICKEN_ Queue de cheval 1
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ Spine/CHICKEN_ R Clavicle
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ Spine/CHICKEN_ R Clavicle/CHICKEN_
+          R UpperArm
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ Spine/CHICKEN_ R Clavicle/CHICKEN_
+          R UpperArm/CHICKEN_ R Forearm
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ Spine/CHICKEN_ R Clavicle/CHICKEN_
+          R UpperArm/CHICKEN_ R Forearm/CHICKEN_ R Hand
+        weight: 1
+      - path: root/CHICKEN_/CHICKEN_ Pelvis/CHICKEN_ Spine/CHICKEN_ Tail
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: root
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 146346ade5a3ada469b6363cba5f061a,
+    type: 3}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
