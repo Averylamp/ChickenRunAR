@@ -7,14 +7,12 @@ using System;
 
 public class ARTapToPlaceObject : MonoBehaviour
 {
-    public GameObject objectToPlace;
     public GameObject placementIndicator;
     public GameObject terrainToPlace;
 
     private ARRaycastManager arOrigin;
     private Pose placementPose;
     private bool placementPoseIsValid = false;
-    private bool terrainPlaced = false;
 
     void Start()
     {
@@ -29,12 +27,6 @@ public class ARTapToPlaceObject : MonoBehaviour
         // Handle clicks in the real world.
         // TODO(ethan): only execute this if not clicking on UI button, etc.
         if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && !ClickLogic.OnUI()) {
-            // if (!terrainPlaced) {
-            //     PlaceTerrain();
-            //     terrainPlaced = true;
-            // } else {
-            //     PlaceObject();
-            // }
             PlaceTerrain();
         }
     }
@@ -43,11 +35,6 @@ public class ARTapToPlaceObject : MonoBehaviour
     {
         // Instantiate(terrainToPlace, placementPose.position, placementPose.rotation);
         terrainToPlace.transform.SetPositionAndRotation(placementPose.position, placementPose.rotation);
-    }
-
-    private void PlaceObject()
-    {
-        Instantiate(objectToPlace, placementPose.position, placementPose.rotation);
     }
 
     private void UpdatePlacementIndicator()
