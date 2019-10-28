@@ -6,11 +6,14 @@ public class ChickenUserController : MonoBehaviour {
     public ChickenCharacter chickenCharacter;
     public float upDownInputSpeed = 3f;
     private Vector3 last_position;
+    float target_angle;
+    float next_turn = 0.0f;
 
     void Start()
     {
         chickenCharacter = GetComponent<ChickenCharacter>();
         last_position = chickenCharacter.transform.position;
+        target_angle = 0.0f;
     }
 
     void Update()
@@ -94,7 +97,7 @@ public class ChickenUserController : MonoBehaviour {
 
         // human position
         // TODO: this should be Human Cube or AR Camera
-        GameObject human = GameObject.Find("AR Camera");
+        GameObject human = GameObject.Find("Human Cube");
         float human_position_x = human.transform.position.x;
         float human_position_z = human.transform.position.z;
 
@@ -108,10 +111,19 @@ public class ChickenUserController : MonoBehaviour {
         float human_velocity_magnitude = Mathf.Sqrt(human_velocity_x * human_velocity_x + human_velocity_z * human_velocity_z);
 
         float forward_acceleration = 1.0f - (distance / 7.0f);
-        chickenCharacter.forwardAcceleration = acceleration_scalar * forward_acceleration;
+        chickenCharacter.forwardAcceleration = 2.0f;//acceleration_scalar * forward_acceleration;
+        // chickenCharacter.GetComponent<Rigidbody>().velocity = new Vector3(10.0f, 0.0f, 0.0f);
 
         // the target angle [0, 360.0)
-        float angle = mod((90.0f - Mathf.Atan2(difference_z, difference_x) * Mathf.Rad2Deg) + 270, 360.0f);
+        // float angle = mod((90.0f - Mathf.Atan2(difference_z, difference_x) * Mathf.Rad2Deg) + 270, 360.0f);
+        // set the target angle
+        float angle = target_angle;
+        float current_time = Time.time;
+        if (current_time  > next_turn) {
+            angle = mod(target_angle + Random.Range(90.0f, 270.0f), 360.0f);
+            target_angle = angle;
+            next_turn = current_time + Random.Range(0.5f, 3.0f);
+        }
 
         // the current heading angle of chicken
         float chicken_heading_angle = Quaternion.LookRotation(chickenCharacter.transform.forward).eulerAngles.y;

@@ -20,12 +20,29 @@ public class ClickLogic : MonoBehaviour
     public bool finger_touch_down = false;
     public static GameObject last_clicked_game_object = null;
 
+    // timer logic
+    static float timer = 60.0f; // one minute timer
+    public float last_second = timer;
+    public Text timer_text;
+
+    // num chickens caught
+    static int num_chickens_caught = 0;
+
+    // modal for setup
+    public GameObject gameplay_ui;
+    public GameObject setup_ui;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Starting ClickLogic.");
         ar_origin = FindObjectOfType<ARRaycastManager>();
+
+        // set setup to active but gameplay to not
+        setup_ui.SetActive(true);
+        gameplay_ui.SetActive(false);
     }
 
     // Update is called once per frame
@@ -68,14 +85,40 @@ public class ClickLogic : MonoBehaviour
             // Make a call to the game object if HandleClick() is defined for the button.
             // Then continue.
             // TODO(ethan): finish a call like this.
-            if (last_clicked_game_object.name == "FireButton") {
-                GameObject.Find("TitleText").GetComponent<UnityEngine.UI.Text>().text += "a";
+            if (last_clicked_game_object.name == "Button_CatchChicken") {
+                num_chickens_caught += 1;
+                GameObject.Find("TitleText").GetComponent<UnityEngine.UI.Text>().text = num_chickens_caught.ToString();
+            } else if (last_clicked_game_object.name == "Button_StartGame_Text") {
+                setup_ui.SetActive(false);
+                gameplay_ui.SetActive(true);
+
+                // reset the game
+                timer = 60.0f; // one minute timer
+                last_second = timer;
+            } else if (last_clicked_game_object.name == "Button_Home") {
+                setup_ui.SetActive(true);
+                gameplay_ui.SetActive(false);
+
+                // reset the game
+                timer = 60.0f; // one minute timer
+                last_second = timer;
+                timer_text.text = timer.ToString("0:00");
             }
             last_clicked_game_object = null;
         }
 
         mouse_button_down = false;
         finger_touch_down = false;
+
+        // if the game is active
+        if (gameplay_ui.activeSelf) {
+            timer -= Time.deltaTime;
+            // only update the timer every second
+            if (last_second - timer > 1.0f) {
+                timer_text.text = timer.ToString("0:00");
+                last_second -= 1.0f;
+            }
+        }
     }
 
     public static bool OnUI() {
