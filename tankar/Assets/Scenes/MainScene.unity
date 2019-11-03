@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.49641287, b: 0.5748173, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -308,6 +308,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chicken
       objectReference: {fileID: 0}
+    - target: {fileID: 131388, guid: 598fb4fbcd06e5e4d9221bd46f8d536c, type: 3}
+      propertyPath: m_TagString
+      value: Chicken
+      objectReference: {fileID: 0}
     - target: {fileID: 435334, guid: 598fb4fbcd06e5e4d9221bd46f8d536c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -381,7 +385,7 @@ GameObject:
   - component: {fileID: 247844164}
   m_Layer: 0
   m_Name: AR Camera
-  m_TagString: MainCamera
+  m_TagString: ARCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1015,8 +1019,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c711a9c1679545e78a9282c5897f3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementIndicator: {fileID: 40919614}
-  terrainToPlace: {fileID: 6739985274832404406}
 --- !u!4 &860760568
 Transform:
   m_ObjectHideFlags: 0
@@ -1482,7 +1484,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1220447597
 MonoBehaviour:
@@ -1496,7 +1498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc123aee855d44d5aba9db1412e0c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 0.7
+  m_Speed: 3
 --- !u!1 &1274580809
 GameObject:
   m_ObjectHideFlags: 0

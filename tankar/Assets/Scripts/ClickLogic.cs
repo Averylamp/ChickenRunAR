@@ -15,6 +15,8 @@ public class ClickLogic : MonoBehaviour
 
     private ARRaycastManager ar_origin;
 
+    private const double CATCH_DISTANCE = 0.5;
+
 
     public bool mouse_button_down = false;
     public bool finger_touch_down = false;
@@ -79,13 +81,39 @@ public class ClickLogic : MonoBehaviour
             }
         }
 
+        
+        GameObject chicken = GameObject.Find("Chicken");
+        float chickenDistance;
+        if(Application.platform == RuntimePlatform.IPhonePlayer){ 
+            GameObject mainCamera = GameObject.Find("AR Camera");        
+            chickenDistance = Vector3.Distance(chicken.transform.position, mainCamera.transform.position);
+        }else{
+             GameObject humanCube = GameObject.Find("Human Cube");
+            chickenDistance = Vector3.Distance(chicken.transform.position, humanCube.transform.position);
+        }
+       
+         
+        try{
+            Image catchButton = GameObject.Find("Button_CatchChicken").GetComponent<Image>();
+            print(catchButton);
+            if (chickenDistance < CATCH_DISTANCE){
+                catchButton.color = Color.green;
+            }else{
+                catchButton.color = Color.red;
+            }
+    
+        }
+        catch{
+            
+        }
+        
         // print current game object if it exists
         if (last_clicked_game_object != null) {
             Debug.Log(last_clicked_game_object.name);
             // Make a call to the game object if HandleClick() is defined for the button.
             // Then continue.
             // TODO(ethan): finish a call like this.
-            if (last_clicked_game_object.name == "Button_CatchChicken") {
+            if (last_clicked_game_object.name == "Button_CatchChicken" && chickenDistance < CATCH_DISTANCE) {
                 num_chickens_caught += 1;
                 GameObject.Find("TitleText").GetComponent<UnityEngine.UI.Text>().text = num_chickens_caught.ToString();
             } else if (last_clicked_game_object.name == "Button_StartGame_Text") {

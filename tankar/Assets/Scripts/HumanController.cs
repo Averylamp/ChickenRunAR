@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HumanController : MonoBehaviour
 {
-  public float m_Speed = 12f;
+  public float m_Speed = 30f;
 
   private string m_MovementHorizontalAxisName;
   private string m_MovementVerticalAxisName;
