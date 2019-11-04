@@ -362,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: 598fb4fbcd06e5e4d9221bd46f8d536c, type: 3}
       propertyPath: chickenSpeed
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 13611122, guid: 598fb4fbcd06e5e4d9221bd46f8d536c, type: 3}
       propertyPath: m_Enabled
