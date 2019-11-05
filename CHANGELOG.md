@@ -2,14 +2,27 @@
 
 ---
 
+### Week of November 10
+
+| Actions | Goals | Problems |
+| ------  | ----- | -------- |
+| Gameplay: Chicken Speedup when respawn | 
+
+#### Notes / Next Steps: 
+- 
+
+---
+
 ### Week of November 3
 
 | Actions | Goals | Problems |
 | ------  | ----- | -------- |
-| 
+| Gameplay: Chicken must be within a certain distance to be caught.  Indicator for catchability | We needed a way to indicate when the chicken could be caught/if you were close enought to the chicken as well as ensure that the human got close to the chicken | Tunable parameter (needs tuning) |
+| Gameplay: Chicken Respawns after being caught | Making it more clear when a chicken is caught.  The chicken also needs to respawn in a different part of the field to move it away from the player.  | Initial implementation introduced bugs |
 
 #### Notes / Next Steps: 
-- 
+- Bug discovered: Chicken respawns off of the field due to different root nodes
+- Bug discovered: Placement arrow unlinked
 
 ---
 
@@ -18,10 +31,11 @@
 | Actions | Goals | Problems |
 | ------  | ----- | -------- |
 | Gameplay: Randomized Chicken Controller | We needed the chicken to run away from the human and throughout the field of play.  We decided to start with a randomized controller that would choose and angle and time, then run at that angle and time then randomly pick a new time | The chicken often will run directly into a fence and keep running into the fence rather than turning |
-| | | |
+| Gameplay: UI Controls for starting game, catching chicken, game modes | We needed a game mode to first place the field, then start the game.  Then there was a period of time designated to chicken catching | The game modes blend into each other because we are using a singular scene.  Leads to certain bugs.  Separating state becomes harder |
 
 #### Notes / Next Steps: 
-- 
+- Bug discovered: Placement Arrow affects Chicken
+- Distance to chicken 
 
 ---
 
