@@ -15,7 +15,7 @@ public class ClickLogic : MonoBehaviour
 
   private ARRaycastManager ar_origin;
 
-  private const double CATCH_DISTANCE = 2.5;
+  public double CATCH_DISTANCE = 2.5;
   private const float CHICKEN_RESPAWN_RANGE = 3.3f;
 
 
@@ -42,6 +42,7 @@ public class ClickLogic : MonoBehaviour
   {
     Destroy(chicken, 0.3f);
     Vector3 humanPosition = Vector3.zero;
+    GameObject terrain = GameObject.Find("Terrain");
     if (Application.platform == RuntimePlatform.IPhonePlayer)
     {
       humanPosition = GameObject.Find("AR Camera").transform.position;
@@ -53,14 +54,14 @@ public class ClickLogic : MonoBehaviour
     Vector3 newChickenPosition = Vector3.zero;
     do
     {
-
-      newChickenPosition = new Vector3(UnityEngine.Random.Range(-CHICKEN_RESPAWN_RANGE, CHICKEN_RESPAWN_RANGE),
-                                       chicken.transform.position.y,
-                                       UnityEngine.Random.Range(-CHICKEN_RESPAWN_RANGE, CHICKEN_RESPAWN_RANGE));
+      newChickenPosition = terrain.transform.position 
+      + (UnityEngine.Random.Range(-CHICKEN_RESPAWN_RANGE, CHICKEN_RESPAWN_RANGE)) * terrain.transform.right 
+      + (UnityEngine.Random.Range(-CHICKEN_RESPAWN_RANGE, CHICKEN_RESPAWN_RANGE)) * terrain.transform.forward; 
     } while (Vector3.Distance(newChickenPosition, humanPosition) < CHICKEN_RESPAWN_RANGE);
 
 
     chicken = Instantiate(chicken, newChickenPosition, Quaternion.identity);
+    chicken.transform.parent = terrain.transform;
     (chicken.GetComponent("ChickenCharacter") as ChickenCharacter).chickenSpeed += 0.3f;
   }
 
