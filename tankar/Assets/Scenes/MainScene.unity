@@ -308,6 +308,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chicken
       objectReference: {fileID: 0}
+    - target: {fileID: 131388, guid: 598fb4fbcd06e5e4d9221bd46f8d536c, type: 3}
+      propertyPath: m_TagString
+      value: Chicken
+      objectReference: {fileID: 0}
     - target: {fileID: 435334, guid: 598fb4fbcd06e5e4d9221bd46f8d536c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -358,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: 598fb4fbcd06e5e4d9221bd46f8d536c, type: 3}
       propertyPath: chickenSpeed
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 13611122, guid: 598fb4fbcd06e5e4d9221bd46f8d536c, type: 3}
       propertyPath: m_Enabled
@@ -996,6 +1000,7 @@ GameObject:
   m_Component:
   - component: {fileID: 860760568}
   - component: {fileID: 860760567}
+  - component: {fileID: 860760569}
   m_Layer: 0
   m_Name: Indicator
   m_TagString: Untagged
@@ -1015,8 +1020,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c711a9c1679545e78a9282c5897f3d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementIndicator: {fileID: 40919614}
-  terrainToPlace: {fileID: 6739985274832404406}
 --- !u!4 &860760568
 Transform:
   m_ObjectHideFlags: 0
@@ -1031,6 +1034,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &860760569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 860760566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350e645d65dda17489fc90a5a6976668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placementIndicator: {fileID: 40919614}
+  terrainToPlace: {fileID: 6739985274832404406}
 --- !u!1 &955285323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1482,7 +1499,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &1220447597
 MonoBehaviour:
@@ -1496,7 +1513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc123aee855d44d5aba9db1412e0c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Speed: 0.7
+  m_Speed: 3
 --- !u!1 &1274580809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1783,8 +1800,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -397.39886}
-  m_SizeDelta: {x: 800, y: 100}
+  m_AnchoredPosition: {x: 0, y: -500}
+  m_SizeDelta: {x: 800, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!64 &1787840640
 MeshCollider:
@@ -1968,12 +1985,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d41a53dcfa046a0b2a7f0760f1f250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CATCH_DISTANCE: 1
   mouse_button_down: 0
   finger_touch_down: 0
   last_second: 60
   timer_text: {fileID: 1274580811}
   gameplay_ui: {fileID: 955285323}
   setup_ui: {fileID: 834449609}
+  chicken: {fileID: 1813050708}
 --- !u!1 &1944241756
 GameObject:
   m_ObjectHideFlags: 0
