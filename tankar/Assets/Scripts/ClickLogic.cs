@@ -124,7 +124,7 @@ public class ClickLogic : MonoBehaviour
 
     try
     {
-      Image catchButton = GameObject.Find("Button_CatchChicken").GetComponent<Image>();
+      Image catchButton = GameObject.Find("CatchChickenButton").GetComponent<Image>();
       if (chickenDistance < CATCH_DISTANCE)
       {
         catchButton.color = Color.green;
@@ -148,12 +148,7 @@ public class ClickLogic : MonoBehaviour
     Debug.Log("Starting ClickLogic.");
     ar_origin = FindObjectOfType<ARRaycastManager>();
 
-    // TODO: remove this code
-    // set setup to active but gameplay to not
-    // setup_ui.SetActive(false);
-    // gameplay_ui.SetActive(true);
-
-    // // Initial the (UI) page map.
+    // Initial the (UI) page map.
     pageMap = new Dictionary<string, GameObject>();
     var pagesEnumValues = Enum.GetValues(typeof(PagesEnum));
     Debug.Log("Setting up pageMap.");
@@ -167,12 +162,8 @@ public class ClickLogic : MonoBehaviour
       Debug.Assert(pageMap.ContainsKey(pageName) == true);
     }
 
-    // TODO: remove this chunk
-    // Set the UI initially.
-    // Debug.Log(GetGameObjectFromEnum(PagesEnum.GamePage));
-
     // Switch to the Landing Page, where the game should start.
-    SwitchCanvas(PagesEnum.GamePage);
+    SwitchCanvas(PagesEnum.LandingPage);
   }
 
   // Reset a canvas based on enum.
@@ -199,7 +190,7 @@ public class ClickLogic : MonoBehaviour
   // Switch to the new canvas and set the active page.
   void SwitchCanvas(PagesEnum pageEnum)
   {
-    // // Reset all the data.
+    // TODO: Reset all the data.
     // ResetAllData();
 
     // Reset all screens.
@@ -324,26 +315,59 @@ public class ClickLogic : MonoBehaviour
 
   void HandleGameplayObjectClick(GameObject LastClickedObject, bool canCatchChicken)
   {
-    // print current game object if it exists
+    // TODO: handle canCatchChicken better
 
     Debug.Log(LastClickedObject.name);
-    // Make a call to the game object if HandleClick() is defined for the button.
-    // Then continue.
-    // TODO(ethan): finish a call like this.
-    if (LastClickedObject.name == "Button_CatchChicken" && canCatchChicken)
+    // Use different logic depending on the page.
+    switch(activePage)
     {
+      case PagesEnum.LandingPage:
+      {
+        if (LastClickedObject.name == "SinglePlayerButton")
+        {
+          SwitchCanvas(PagesEnum.SetupPage);
+        }
+        else if (LastClickedObject.name == "MultiPlayerButton")
+        {
 
-      num_chickens_caught += 1;
-      GameObject.Find("TitleText").GetComponent<UnityEngine.UI.Text>().text = num_chickens_caught.ToString();
-      RemoveAndReplaceChicken();
-    }
-    else if (LastClickedObject.name == "Button_StartGame_Text")
-    {
-      StartGameplay();
-    }
-    else if (LastClickedObject.name == "Button_Home")
-    {
-      ResetGame();
+        }
+        else if (LastClickedObject.name == "LeaderboardButton")
+        {
+
+        }
+        else if (LastClickedObject.name == "SettingsButton")
+        {
+          
+        }
+        break;
+      }
+      case PagesEnum.SetupPage:
+      {
+        if (LastClickedObject.name == "StartButton")
+        {
+          SwitchCanvas(PagesEnum.GamePage);
+        }
+        else if (LastClickedObject.name == "CloseButton")
+        {
+          SwitchCanvas(PagesEnum.LandingPage);
+        }
+        break;
+      }
+      case PagesEnum.GamePage:
+      {
+        if (LastClickedObject.name == "CloseButton")
+        {
+          SwitchCanvas(PagesEnum.SetupPage);
+        }
+        else if (LastClickedObject.name == "CatchChickenButton" && canCatchChicken)
+        {
+          num_chickens_caught += 1;
+          GameObject.Find("ChickenCount").GetComponent<UnityEngine.UI.Text>().text = num_chickens_caught.ToString();
+          RemoveAndReplaceChicken();
+        }
+        break;
+      }
+      default: break;
     }
     LastClickedObject = null;
 
