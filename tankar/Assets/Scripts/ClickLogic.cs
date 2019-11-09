@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -32,11 +33,45 @@ public class ClickLogic : MonoBehaviour
   // num chickens caught
   static int num_chickens_caught = 0;
 
-  // modal for setup
-  public GameObject gameplay_ui;
-  public GameObject setup_ui;
+  // Enum for all of the pages.
+  public enum PagesEnum
+  {
+    [Description("SetupPage")]
+    SetupPage,
+    [Description("GamePage")]
+    GamePage,
+    [Description("LeaderboardPage")]
+    LeaderboardPage,
+    [Description("SettingsPage")]
+    SettingsPage,
+    [Description("LandingPage")]
+    LandingPage,
+    [Description("InteractiveTutorialPage")]
+    InteractiveTutorialPage,
+    [Description("InstructionsPage")]
+    InstructionsPage
+  }
 
+  // Keep track of the active page.
+  PagesEnum activePage;
+
+  // Hash table for GameObject pages.
+  public Dictionary<string, GameObject> pageMap;
+
+  public GameObject setup_ui;
+  public GameObject gameplay_ui;
+
+  // Chicken that should be set in the Unity UI.
   public GameObject chicken;
+
+  // Returns the GameObjct associated with the enum value.
+  // Ex. call: GetGameObjectFromEnum(PagesEnum.SetupPage);
+  public GameObject GetGameObjectFromEnum(PagesEnum pageEnum)
+  {
+    Debug.Log("Calling GetGameObjectFromEnum");
+    Debug.Log(pageEnum.ToString());
+    return (GameObject) pageMap[pageEnum.ToString()];
+  }
 
   void RemoveAndReplaceChicken()
   {
@@ -113,9 +148,79 @@ public class ClickLogic : MonoBehaviour
     Debug.Log("Starting ClickLogic.");
     ar_origin = FindObjectOfType<ARRaycastManager>();
 
+    // TODO: remove this code
     // set setup to active but gameplay to not
-    setup_ui.SetActive(true);
-    gameplay_ui.SetActive(false);
+    // setup_ui.SetActive(false);
+    // gameplay_ui.SetActive(true);
+
+    // // Initial the (UI) page map.
+    pageMap = new Dictionary<string, GameObject>();
+    var pagesEnumValues = Enum.GetValues(typeof(PagesEnum));
+    Debug.Log("Setting up pageMap.");
+    foreach (PagesEnum pageEnum in pagesEnumValues)
+    {
+      // Add the GameObjects that correspond to the page name
+      // to the pageMap.
+      string pageName = pageEnum.ToString();
+      Debug.Assert(pageMap.ContainsKey(pageName) == false);
+      pageMap.Add(pageName, GameObject.Find(pageName));
+      Debug.Assert(pageMap.ContainsKey(pageName) == true);
+    }
+
+    // TODO: remove this chunk
+    // Set the UI initially.
+    // Debug.Log(GetGameObjectFromEnum(PagesEnum.GamePage));
+
+    // Switch to the Landing Page, where the game should start.
+    SwitchCanvas(PagesEnum.GamePage);
+  }
+
+  // Reset a canvas based on enum.
+  void ResetCanvas(PagesEnum pageEnum)
+  {
+    GetGameObjectFromEnum(pageEnum).SetActive(false);
+  }
+
+  // This will reset and hide all canvases.
+  void ResetAllCanvases()
+  {
+    // Deactivate all of the pages.
+    foreach (PagesEnum pageEnum in Enum.GetValues(typeof(PagesEnum)))
+    {
+      ResetCanvas(pageEnum);
+    }
+  }
+
+  void ActivateCanvas(PagesEnum pageEnum)
+  {
+    GetGameObjectFromEnum(pageEnum).SetActive(true);
+  }
+
+  // Switch to the new canvas and set the active page.
+  void SwitchCanvas(PagesEnum pageEnum)
+  {
+    // // Reset all the data.
+    // ResetAllData();
+
+    // Reset all screens.
+    ResetAllCanvases();
+
+    // Turn on the screen we care about.
+    ActivateCanvas(pageEnum);
+    activePage = pageEnum;
+  }
+
+  // Call this at every screen change to reset all the game data.
+  void ResetAllData()
+  {
+    // Reset the timer.
+    timer = 60.0f; // one minute timer
+    last_second = timer;
+    timer_text.text = timer.ToString("0:00");
+
+    // Reset the chicken count.
+
+    // TODO: handle the placement persisting
   }
 
   void ResetGame()

@@ -1,0 +1,24 @@
+Version 1.0.4 - 11.04.2017
+- Widget Manager
+- Component menu
+
+Version 1.0.3
+- Deactivate on close option
+- Tooltip to stay in place option
+- OnShowFinished, OnCloseFinished triggers
+
+Version 1.0.2
+- Renamed UI Controls to UI Widget
+- Renamed UIWindow to UIWidget
+- Added animation options to UIWidget
+- Added a button to add TriggerEvents(OnShow, OnClose, OnTweenFinished)
+- Removed key triggers, use KeyTrigger instead
+- Added new ui widgets
+- Changed namespace to Unitycoding.UIWidgets
+- Replaced UIWindow.Get<T>(string name) with UIUtility.Find<T>(string name)
+
+Version 1.0.1
+- Code comments in TooltipTrigger.cs
+
+Version 1.0.0
+- Initial Release 
