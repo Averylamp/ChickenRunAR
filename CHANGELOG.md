@@ -2,6 +2,57 @@
 
 ---
 
+### Week of November 10
+
+| Actions | Goals | Problems |
+| ------  | ----- | -------- |
+| Gameplay: Chicken Speedup when respawn | 
+
+#### Notes / Next Steps: 
+- 
+
+---
+
+### Week of November 3
+
+| Actions | Goals | Problems |
+| ------  | ----- | -------- |
+| Gameplay: Chicken must be within a certain distance to be caught.  Indicator for catchability | We needed a way to indicate when the chicken could be caught/if you were close enought to the chicken as well as ensure that the human got close to the chicken | Tunable parameter (needs tuning) |
+| Gameplay: Chicken Respawns after being caught | Making it more clear when a chicken is caught.  The chicken also needs to respawn in a different part of the field to move it away from the player.  | Initial implementation introduced bugs |
+
+#### Notes / Next Steps: 
+- Bug discovered: Chicken respawns off of the field due to different root nodes
+- Bug discovered: Placement arrow unlinked
+
+---
+
+### Week of October 27
+
+| Actions | Goals | Problems |
+| ------  | ----- | -------- |
+| Gameplay: Randomized Chicken Controller | We needed the chicken to run away from the human and throughout the field of play.  We decided to start with a randomized controller that would choose and angle and time, then run at that angle and time then randomly pick a new time | The chicken often will run directly into a fence and keep running into the fence rather than turning |
+| Gameplay: UI Controls for starting game, catching chicken, game modes | We needed a game mode to first place the field, then start the game.  Then there was a period of time designated to chicken catching | The game modes blend into each other because we are using a singular scene.  Leads to certain bugs.  Separating state becomes harder |
+
+#### Notes / Next Steps: 
+- Bug discovered: Placement Arrow affects Chicken
+- Distance to chicken 
+
+---
+
+### Week of October 20
+
+| Actions | Goals | Problems |
+| ------  | ----- | -------- |
+| Gameplay: Set up the fenced area to be a reasonable size and shape.  We used a store asset for fences that came in a couple of different prefab sizes of 2-4 fence links | To create the gameplay area we played around with types of fences and added rigid bodies to contain the chicken | The fence size is not dynamic.  It is currently static and will be difficult to scale up or down. |
+| Gameplay: We set up a simple human player | We wanted to be able to test the app inside of the simulator to save time | no-op |
+| Gameplay: Chicken Animation Speed | We needed to figure out how to make the chicken to move faster realistically as well as cover distance in the real world.   | We encountered many problems figuring out how to tie the chicken controller to animation speed.  The chicken needed to run fast and walk, and switch between these two animations, while covering distance |
+
+#### Notes / Next Steps: 
+- Chicken Controller
+- Human Controller
+
+---
+
 ### Week of October 13
 
 | Actions | Goals | Problems |
