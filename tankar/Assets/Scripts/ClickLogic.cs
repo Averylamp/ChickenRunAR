@@ -209,10 +209,12 @@ public class ClickLogic : MonoBehaviour
     last_second = timer;
     timer_text.text = timer.ToString("0:00");
 
-    // Reset the chicken count.
+    // TODO: Reset the chicken count.
+    num_chickens_caught = 0;
+    GameObject.Find("ChickenCount").GetComponent<UnityEngine.UI.Text>().text = num_chickens_caught.ToString();
 
     // TODO: handle the placement persisting
-  }
+    }
 
   void ResetGame()
   {
@@ -269,7 +271,7 @@ public class ClickLogic : MonoBehaviour
 
     mouse_button_down = false;
     finger_touch_down = false;
-
+        
     // if the game is active
     if (gameplay_ui.activeSelf)
     {
@@ -337,7 +339,7 @@ public class ClickLogic : MonoBehaviour
         }
         else if (LastClickedObject.name == "SettingsButton")
         {
-          
+          // TODO(Moin): add settings popup menu.
         }
         break;
       }
