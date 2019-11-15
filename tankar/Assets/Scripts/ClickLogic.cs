@@ -70,14 +70,26 @@ public class ClickLogic : MonoBehaviour
   {
     Debug.Log("Calling GetGameObjectFromEnum");
     Debug.Log(pageEnum.ToString());
-    return (GameObject) pageMap[pageEnum.ToString()];
+    return (GameObject)pageMap[pageEnum.ToString()];
   }
 
   void RemoveAndReplaceChicken()
   {
-    Destroy(chicken, 0.3f);
-    Vector3 humanPosition = Vector3.zero;
     GameObject terrain = GameObject.Find("Terrain");
+    GameObject confettiObject = GameObject.Find("ConfettiCelebration");
+    confettiObject = Instantiate(confettiObject, chicken.transform.position, Quaternion.identity);
+    confettiObject.transform.parent = terrain.transform;
+    confettiObject.GetComponent<ParticleSystem>().Play();
+
+    // GameObject confettiObject = Instantiate()
+    //     ParticleSystem confetti = chicken.GetComponent<ParticleSystem>();
+    //     confetti.Play();
+    ChickenCharacter chickenController = chicken.GetComponent<ChickenCharacter>();
+    chickenController.Death();
+    Destroy(confettiObject, 3.0f);
+    Destroy(chicken, 3.0f);
+    Vector3 humanPosition = Vector3.zero;
+
     if (Application.platform == RuntimePlatform.IPhonePlayer)
     {
       humanPosition = GameObject.Find("AR Camera").transform.position;
@@ -89,9 +101,9 @@ public class ClickLogic : MonoBehaviour
     Vector3 newChickenPosition = Vector3.zero;
     do
     {
-      newChickenPosition = terrain.transform.position 
-      + (UnityEngine.Random.Range(-CHICKEN_RESPAWN_RANGE, CHICKEN_RESPAWN_RANGE)) * terrain.transform.right 
-      + (UnityEngine.Random.Range(-CHICKEN_RESPAWN_RANGE, CHICKEN_RESPAWN_RANGE)) * terrain.transform.forward; 
+      newChickenPosition = terrain.transform.position
+      + (UnityEngine.Random.Range(-CHICKEN_RESPAWN_RANGE, CHICKEN_RESPAWN_RANGE)) * terrain.transform.right
+      + (UnityEngine.Random.Range(-CHICKEN_RESPAWN_RANGE, CHICKEN_RESPAWN_RANGE)) * terrain.transform.forward;
     } while (Vector3.Distance(newChickenPosition, humanPosition) < CHICKEN_RESPAWN_RANGE);
 
 
@@ -214,7 +226,7 @@ public class ClickLogic : MonoBehaviour
     GameObject.Find("ChickenCount").GetComponent<UnityEngine.UI.Text>().text = num_chickens_caught.ToString();
 
     // TODO: handle the placement persisting
-    }
+  }
 
   void ResetGame()
   {
@@ -271,7 +283,7 @@ public class ClickLogic : MonoBehaviour
 
     mouse_button_down = false;
     finger_touch_down = false;
-        
+
     // if the game is active
     if (gameplay_ui.activeSelf)
     {
@@ -321,54 +333,54 @@ public class ClickLogic : MonoBehaviour
 
     Debug.Log(LastClickedObject.name);
     // Use different logic depending on the page.
-    switch(activePage)
+    switch (activePage)
     {
       case PagesEnum.LandingPage:
-      {
-        if (LastClickedObject.name == "SinglePlayerButton")
         {
-          SwitchCanvas(PagesEnum.SetupPage);
-        }
-        else if (LastClickedObject.name == "MultiPlayerButton")
-        {
+          if (LastClickedObject.name == "SinglePlayerButton")
+          {
+            SwitchCanvas(PagesEnum.SetupPage);
+          }
+          else if (LastClickedObject.name == "MultiPlayerButton")
+          {
 
-        }
-        else if (LastClickedObject.name == "LeaderboardButton")
-        {
+          }
+          else if (LastClickedObject.name == "LeaderboardButton")
+          {
 
+          }
+          else if (LastClickedObject.name == "SettingsButton")
+          {
+            // TODO(Moin): add settings popup menu.
+          }
+          break;
         }
-        else if (LastClickedObject.name == "SettingsButton")
-        {
-          // TODO(Moin): add settings popup menu.
-        }
-        break;
-      }
       case PagesEnum.SetupPage:
-      {
-        if (LastClickedObject.name == "StartButton")
         {
-          SwitchCanvas(PagesEnum.GamePage);
+          if (LastClickedObject.name == "StartButton")
+          {
+            SwitchCanvas(PagesEnum.GamePage);
+          }
+          else if (LastClickedObject.name == "CloseButton")
+          {
+            SwitchCanvas(PagesEnum.LandingPage);
+          }
+          break;
         }
-        else if (LastClickedObject.name == "CloseButton")
-        {
-          SwitchCanvas(PagesEnum.LandingPage);
-        }
-        break;
-      }
       case PagesEnum.GamePage:
-      {
-        if (LastClickedObject.name == "CloseButton")
         {
-          SwitchCanvas(PagesEnum.SetupPage);
+          if (LastClickedObject.name == "CloseButton")
+          {
+            SwitchCanvas(PagesEnum.SetupPage);
+          }
+          else if (LastClickedObject.name == "CatchChickenButton" && canCatchChicken)
+          {
+            num_chickens_caught += 1;
+            GameObject.Find("ChickenCount").GetComponent<UnityEngine.UI.Text>().text = num_chickens_caught.ToString();
+            RemoveAndReplaceChicken();
+          }
+          break;
         }
-        else if (LastClickedObject.name == "CatchChickenButton" && canCatchChicken)
-        {
-          num_chickens_caught += 1;
-          GameObject.Find("ChickenCount").GetComponent<UnityEngine.UI.Text>().text = num_chickens_caught.ToString();
-          RemoveAndReplaceChicken();
-        }
-        break;
-      }
       default: break;
     }
     LastClickedObject = null;

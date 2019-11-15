@@ -138,43 +138,6 @@ public class ChickenCharacter : MonoBehaviour
 
   public void Move()
   {
-    chickenAnimator.SetFloat("Turn", yawVelocity);
-    chickenAnimator.SetFloat("UpDown", upDown);
-    chickenAnimator.SetFloat("UpVelocity", chickenRigid.velocity.y);
-
-    // if (isFlying)
-    // {
-    //   chickenAnimator.SetFloat("Forward", forwardAcceleration);
-    //   if (soaringTime < 1f)
-    //   {
-    //     forwardSpeed = soaringTime * meanForwardSpeed;
-    //     upDown = soaringTime;
-
-    //   }
-
-    //   if (forwardAcceleration < 0f)
-    //   {
-    //     chickenRigid.velocity = transform.up * upDown + transform.forward * forwardSpeed;
-    //   }
-    //   else
-    //   {
-    //     chickenRigid.velocity = transform.up * (upDown + (forwardSpeed - meanForwardSpeed)) + transform.forward * forwardSpeed;
-    //   }
-    //   transform.RotateAround(transform.position, Vector3.up, Time.deltaTime * yawVelocity * 100f);
-
-    //   forwardSpeed = Mathf.Lerp(forwardSpeed, 0f, Time.deltaTime * speedDumpingTime);
-    //   forwardSpeed = Mathf.Clamp(forwardSpeed + forwardAcceleration * Time.deltaTime, 0f, maxForwardSpeed);
-    //   upDown = Mathf.Lerp(upDown, 0, Time.deltaTime * 3f);
-
-    // }
-    // else
-    // {
-    //   chickenAnimator.SetFloat("Forward", forwardAcceleration * walkMode * forwardAccelerationMultiplier);
-    // }
-
-    // chickenAnimator.SetFloat("Forward", 2.0f);
     chickenAnimator.SetFloat("Forward", forwardAcceleration);
-
-    // chickenRigid.velocity = new Vector3(100.0f, 0.0f, 100.0f);
   }
 }
