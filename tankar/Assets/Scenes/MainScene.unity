@@ -3151,6 +3151,8 @@ GameObject:
   - component: {fileID: 1829861149}
   - component: {fileID: 1829861148}
   - component: {fileID: 1829861152}
+  - component: {fileID: 1829861153}
+  - component: {fileID: 1829861154}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3256,14 +3258,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8d41a53dcfa046a0b2a7f0760f1f250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CATCH_DISTANCE: 1
-  mouse_button_down: 0
-  finger_touch_down: 0
-  last_second: 60
-  timer_text: {fileID: 1274580811}
-  setup_ui: {fileID: 834449609}
-  gameplay_ui: {fileID: 955285323}
-  chicken: {fileID: 1813050708}
+  mouseButtonDown: 0
+  fingerTouchDown: 0
+--- !u!114 &1829861153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829861147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db020af2c6c724c6a8c9ba3e878996ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CATCH_DISTANCE: 2.5
+--- !u!114 &1829861154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829861147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7957c5ec78e7443c09963886abbcdb2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastSecond: 60
+  timerText: {fileID: 0}
+  activePage: 0
+  setupUI: {fileID: 834449609}
+  gameplayUI: {fileID: 955285323}
 --- !u!1 &1880889313
 GameObject:
   m_ObjectHideFlags: 0
