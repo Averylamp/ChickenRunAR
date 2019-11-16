@@ -111,6 +111,24 @@ public class GameLogicController : MonoBehaviour
     {
       // no-op
     }
+
+    try
+    {
+      GameObject catchDistanceBar = GameObject.Find("CatchDistanceBar");
+      Image catchImage = catchDistanceBar.GetComponent<Image>();
+      float percentDistance = ((float)CATCH_DISTANCE / chickenDistance);
+      if (chickenDistance < CATCH_DISTANCE)
+      {
+        percentDistance = 1.0f;
+      }
+      Debug.Log(percentDistance);
+      catchDistanceBar.transform.localScale += new Vector3(percentDistance - catchDistanceBar.transform.localScale.x, 0, 0);
+      catchImage.color = new Color((1f - percentDistance), percentDistance, 0.0f, 1.0f);
+    }
+    catch
+    {
+
+    }
   }
 
 }
