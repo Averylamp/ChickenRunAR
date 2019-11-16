@@ -61,7 +61,11 @@ public class GameLogicController : MonoBehaviour
 
     chicken = Instantiate(chicken, newChickenPosition, Quaternion.identity);
     chicken.transform.parent = terrain.transform;
+
     (chicken.GetComponent("ChickenCharacter") as ChickenCharacter).chickenSpeed += 0.3f;
+    GameObject confettiSpawnObject = GameObject.Find("ConfettiSpawn");
+    confettiSpawnObject = Instantiate(confettiSpawnObject, newChickenPosition, Quaternion.identity);
+    confettiSpawnObject.GetComponent<ParticleSystem>().Play();
   }
 
   public float GetChickenDistance()

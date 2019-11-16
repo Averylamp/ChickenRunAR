@@ -113,7 +113,6 @@ public class ChickenUserController : MonoBehaviour
     float current_time = Time.time;
     if (current_time > next_turn)
     {
-      Debug.Log("Changing direction");
       angle = mod(target_angle + Random.Range(90.0f, 270.0f), 360.0f);
       target_angle = angle;
       next_turn = current_time + Random.Range(0.5f, 3.0f);
