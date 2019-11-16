@@ -22,6 +22,18 @@ public class GameLogicController : MonoBehaviour
     UpdateChickenDistance();
   }
 
+  public Vector3 GetPlayerPosition()
+  {
+    if (Application.platform == RuntimePlatform.IPhonePlayer)
+    {
+      return GameObject.Find("AR Camera").transform.position;
+    }
+    else
+    {
+      return GameObject.Find("Human Cube").transform.position;
+    }
+
+  }
   public void RemoveAndReplaceChicken()
   {
     GameObject terrain = GameObject.Find("Terrain");
@@ -37,16 +49,7 @@ public class GameLogicController : MonoBehaviour
     chickenController.Death();
     Destroy(confettiObject, 3.0f);
     Destroy(chicken, 3.0f);
-    Vector3 humanPosition = Vector3.zero;
-
-    if (Application.platform == RuntimePlatform.IPhonePlayer)
-    {
-      humanPosition = GameObject.Find("AR Camera").transform.position;
-    }
-    else
-    {
-      humanPosition = GameObject.Find("Human Cube").transform.position;
-    }
+    Vector3 humanPosition = GetPlayerPosition();
     Vector3 newChickenPosition = Vector3.zero;
     do
     {

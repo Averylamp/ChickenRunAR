@@ -621,13 +621,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: 598fb4fbcd06e5e4d9221bd46f8d536c, type: 3}
       propertyPath: chickenSpeed
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 13611122, guid: 598fb4fbcd06e5e4d9221bd46f8d536c, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 361573371474606251, guid: 598fb4fbcd06e5e4d9221bd46f8d536c, type: 3}
+    - {fileID: 2750868453152329384, guid: 598fb4fbcd06e5e4d9221bd46f8d536c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 598fb4fbcd06e5e4d9221bd46f8d536c, type: 3}
 --- !u!1 &226754484
 GameObject:
@@ -2542,7 +2544,7 @@ GameObject:
   - component: {fileID: 1274580812}
   - component: {fileID: 1274580811}
   m_Layer: 5
-  m_Name: Text
+  m_Name: TimerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3286,7 +3288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastSecond: 60
-  timerText: {fileID: 0}
+  timerText: {fileID: 1274580811}
   activePage: 0
   setupUI: {fileID: 834449609}
   gameplayUI: {fileID: 955285323}

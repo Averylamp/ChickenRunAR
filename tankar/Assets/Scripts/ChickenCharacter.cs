@@ -10,7 +10,6 @@ public class ChickenCharacter : MonoBehaviour
   public float upDown = 0f;
   public float forwardAcceleration = 0f;
 
-  public float forwardAccelerationMultiplier = 1f;
   public float yawVelocity = 0f;
   public float groundCheckDistance = 5f;
   public bool isGrounded = true;
@@ -139,5 +138,6 @@ public class ChickenCharacter : MonoBehaviour
   public void Move()
   {
     chickenAnimator.SetFloat("Forward", forwardAcceleration);
+    chickenAnimator.SetFloat("Turn", yawVelocity);
   }
 }
