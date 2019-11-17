@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.XR.ARFoundation;
 
@@ -17,17 +18,14 @@ public class ClickLogic : MonoBehaviour
   public bool fingerTouchDown = false;
 
 
-  // Start is called before the first frame update
-  void Start()
-  {
-    Debug.Log("Starting ClickLogic.");
+    // Start is called before the first frame update
+    void Start()
+    {
+        Debug.Log("Starting ClickLogic.");
 
-    gameLogicController = GetComponent<GameLogicController>();
-    uiLogicController = GetComponent<UILogicController>();
-  }
-
-
-
+        gameLogicController = GetComponent<GameLogicController>();
+        uiLogicController = GetComponent<UILogicController>();
+    }
 
 
   // Update is called once per frame
@@ -82,9 +80,21 @@ public class ClickLogic : MonoBehaviour
 
   void HandleGameplayObjectClick(GameObject lastClickedObject)
   {
-    // TODO: handle canCatchChicken better
-
-    Debug.Log(lastClickedObject.name);
+        // TODO: handle canCatchChicken better
+       Debug.Log(lastClickedObject.name);
+    if (lastClickedObject.name == "InputText")
+        {
+            Debug.Log("Activating Name Field");
+            Debug.Log(lastClickedObject.GetComponent<InputField>());
+            //lastClickedObject.GetComponent<InputField>().SetTextWithoutNotify("Hello");
+            InputField inputField = lastClickedObject.GetComponent<InputField>();
+            inputField.text = "hi";
+            //inputField.ActivateInputField();
+            inputField.Select();
+            //GameObject.Find("NameField").GetComponent<InputField>().ActivateInputField();
+            lastClickedObject = null;
+            return;
+        }
     // Use different logic depending on the page.
     switch (uiLogicController.activePage)
     {

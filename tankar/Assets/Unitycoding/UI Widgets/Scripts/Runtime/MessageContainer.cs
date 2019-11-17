@@ -10,7 +10,7 @@ namespace Unitycoding.UIWidgets
 
 		#if UNITY_EDITOR
 		[UnityEditor.MenuItem ("Tools/Unitycoding/UI Widgets/Components/Message Container")]
-		static void AddWidgetComponent ()
+    		static void AddWidgetComponent ()
 		{
 			UnityEditor.Selection.activeGameObject.AddComponent<MessageContainer> ();
 		}
