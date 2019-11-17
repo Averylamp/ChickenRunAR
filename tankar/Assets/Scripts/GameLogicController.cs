@@ -14,6 +14,12 @@ public class GameLogicController : MonoBehaviour
   private void Start()
   {
     chicken = GameObject.Find("Chicken");
+    if (Application.platform == RuntimePlatform.IPhonePlayer)
+    {
+      CATCH_DISTANCE = 0.5;
+      Destroy(GameObject.Find("Human Cube"));
+    }
+
   }
 
   // Update is called once per frame
