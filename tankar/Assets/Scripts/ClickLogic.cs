@@ -5,6 +5,7 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.UI;
 
 
+
 // Example of click on the canvas:
 // https://answers.unity.com/questions/1526663/detect-click-on-canvas.html
 
@@ -13,23 +14,20 @@ public class ClickLogic : MonoBehaviour
 
   GameLogicController gameLogicController;
   UILogicController uiLogicController;
-
   public bool mouseButtonDown = false;
   public bool fingerTouchDown = false;
-
+  AudioSource audioFX;
 
   // Start is called before the first frame update
   void Start()
   {
     Debug.Log("Starting ClickLogic.");
-
+    audioFX = GameObject.Find("CatchChickenButton").GetComponent<AudioSource>();
     gameLogicController = GetComponent<GameLogicController>();
     uiLogicController = GetComponent<UILogicController>();
+    AudioSource audioMusic = GetComponent<AudioSource>();
+    audioMusic.Play(0);
   }
-
-
-
-
 
   // Update is called once per frame
   void Update()
@@ -131,6 +129,7 @@ public class ClickLogic : MonoBehaviour
           else if (lastClickedObject.name == "CatchChickenButton" && canCatchChicken)
           {
             UILogicController.numChickensCaught += 1;
+            lastClickedObject.GetComponent<AudioSource>().Play();
             GameObject.Find("ChickenCount").GetComponent<UnityEngine.UI.Text>().text = UILogicController.numChickensCaught.ToString();
             gameLogicController.RemoveAndReplaceChicken();
           }
@@ -140,16 +139,44 @@ public class ClickLogic : MonoBehaviour
         {
           if (lastClickedObject.name == "SettingsCloseButton")
           {
+            string name = GameObject.Find("SettingsPageName").GetComponent<InputField>().text;
+            PlayerPrefs.SetString("name", name);
+            PlayerPrefs.Save();
+            Debug.Log(PlayerPrefs.GetString("name"));
             uiLogicController.SwitchCanvas(UILogicController.PagesEnum.LandingPage);
           }
           else if (lastClickedObject.name == "SettingsNameInputField")
           {
+            
           }
           else if (lastClickedObject.name == "SettingsPageMusicButton")
           {
+            AudioSource audioMusic = GetComponent<AudioSource>();
+
+            Text buttonText = lastClickedObject.GetComponentInChildren<Text>();
+
+            if (audioMusic.isPlaying)
+            {
+                buttonText.text = "MUSIC ON";
+                audioMusic.Stop();
+            } else
+            {
+                buttonText.text = "MUSIC OFF";
+                audioMusic.Play();
+            }
           }
           else if (lastClickedObject.name == "SettingsPageSoundButton")
           {
+            Text buttonText = lastClickedObject.GetComponentInChildren<Text>();
+            audioFX.mute = !audioFX.mute;
+
+            if (audioFX.mute)
+            {
+                buttonText.text = "SOUND EFFECTS OFF";
+            } else
+            {
+                buttonText.text = "SOUND EFFECTS ON";
+            }
           }
           break;
         }
