@@ -132,14 +132,6 @@ public class UILogicController : MonoBehaviour
       case PagesEnum.GamePage:
         StartGameplay();
         break;
-      case PagesEnum.SettingsPage:
-        string name = PlayerPrefs.GetString("name");
-        if (!name.Equals(""))
-        {
-            GameObject.Find("SettingsPageName").GetComponentInChildren<Text>().text = name;
-        }
-        break;
-
     }
   }
 
