@@ -6,7 +6,7 @@ public class GameLogicController : MonoBehaviour
 {
 
   public static double CATCH_DISTANCE = 2.5;
-  private const float CHICKEN_RESPAWN_RANGE = 3.3f;
+  private const float CHICKEN_RESPAWN_RANGE = 2.2f;
 
   private float chickenDistance = 100;
   private GameObject chicken;
@@ -68,7 +68,8 @@ public class GameLogicController : MonoBehaviour
     chicken = Instantiate(chicken, newChickenPosition, Quaternion.identity);
     chicken.transform.parent = terrain.transform;
 
-    (chicken.GetComponent("ChickenCharacter") as ChickenCharacter).chickenSpeed += 0.3f;
+    ChickenCharacter.chickenSpeed += 0.2f;
+    ChickenCharacter.chickenSpeedBase += 0.2f;
     GameObject confettiSpawnObject = GameObject.Find("ConfettiSpawn");
     confettiSpawnObject = Instantiate(confettiSpawnObject, newChickenPosition, Quaternion.identity);
     confettiSpawnObject.GetComponent<ParticleSystem>().Play();

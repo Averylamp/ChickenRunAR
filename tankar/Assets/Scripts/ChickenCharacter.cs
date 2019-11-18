@@ -4,7 +4,9 @@ using System.Collections;
 public class ChickenCharacter : MonoBehaviour
 {
   public Animator chickenAnimator;
-  public float chickenSpeed = 1f;
+  public static float chickenSpeed = 1f;
+
+  public static float chickenSpeedBase = 0.5f;
   Rigidbody chickenRigid;
   public bool isFlying = false;
   public float upDown = 0f;

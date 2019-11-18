@@ -102,7 +102,7 @@ public class ChickenUserController : MonoBehaviour
     float chickenDistance = gameLogicController.GetChickenDistance();
 
     float variableAcceleration = Mathf.Max(-2f * Mathf.Log10(chickenDistance) + 1.75f, 0f);
-    float forward_acceleration = 0.5f + variableAcceleration;
+    float forward_acceleration = ChickenCharacter.chickenSpeedBase + variableAcceleration;
     chickenCharacter.forwardAcceleration = forward_acceleration; //acceleration_scalar * forward_acceleration;
                                                                  // chickenCharacter.GetComponent<Rigidbody>().velocity = new Vector3(10.0f, 0.0f, 0.0f);
 
