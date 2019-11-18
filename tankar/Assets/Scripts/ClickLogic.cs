@@ -101,7 +101,7 @@ public class ClickLogic : MonoBehaviour
           }
           else if (lastClickedObject.name == "LeaderboardButton")
           {
-
+            uiLogicController.SwitchCanvas(UILogicController.PagesEnum.LeaderboardPage);
           }
           else if (lastClickedObject.name == "SettingsButton")
           {
@@ -144,14 +144,20 @@ public class ClickLogic : MonoBehaviour
           }
           else if (lastClickedObject.name == "SettingsNameInputField")
           {
-            Debug.Log("HERE.");
-            // GameObject.Find("SettingsNameInputField").GetComponent<InputField>().Select();
           }
           else if (lastClickedObject.name == "SettingsPageMusicButton")
           {
           }
           else if (lastClickedObject.name == "SettingsPageSoundButton")
           {
+          }
+          break;
+        }
+      case UILogicController.PagesEnum.LeaderboardPage:
+        {
+          if (lastClickedObject.name == "LeaderboardCloseButton")
+          {
+            uiLogicController.SwitchCanvas(UILogicController.PagesEnum.LandingPage);
           }
           break;
         }
