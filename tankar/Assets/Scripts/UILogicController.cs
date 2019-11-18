@@ -136,7 +136,7 @@ public class UILogicController : MonoBehaviour
         string name = PlayerPrefs.GetString("name");
         if (!name.Equals(""))
         {
-            GameObject.Find("SettingsPageName").GetComponentInChildren<Text>().text = name;
+            GameObject.Find("SettingsPageName").GetComponent<InputField>().text = name;
         }
         break;
 
