@@ -13,7 +13,7 @@ public class ClickLogic : MonoBehaviour
 
   GameLogicController gameLogicController;
   UILogicController uiLogicController;
-
+  AudioSource audioMusic;
   public bool mouseButtonDown = false;
   public bool fingerTouchDown = false;
 
@@ -25,11 +25,9 @@ public class ClickLogic : MonoBehaviour
 
     gameLogicController = GetComponent<GameLogicController>();
     uiLogicController = GetComponent<UILogicController>();
+    audioMusic = GetComponent<AudioSource>();
+    audioMusic.Play(0);
   }
-
-
-
-
 
   // Update is called once per frame
   void Update()
@@ -131,6 +129,7 @@ public class ClickLogic : MonoBehaviour
           else if (lastClickedObject.name == "CatchChickenButton" && canCatchChicken)
           {
             UILogicController.numChickensCaught += 1;
+            lastClickedObject.GetComponent<AudioSource>().Play();
             GameObject.Find("ChickenCount").GetComponent<UnityEngine.UI.Text>().text = UILogicController.numChickensCaught.ToString();
             gameLogicController.RemoveAndReplaceChicken();
           }
@@ -147,9 +146,22 @@ public class ClickLogic : MonoBehaviour
           }
           else if (lastClickedObject.name == "SettingsPageMusicButton")
           {
+            Text buttonText = lastClickedObject.GetComponentInChildren<Text>();
+
+            if (audioMusic.isPlaying)
+            {
+                buttonText.text = "MUSIC ON";
+                audioMusic.Stop();
+            } else
+            {
+                buttonText.text = "MUSIC OFF";
+                audioMusic.Play();
+            }
           }
           else if (lastClickedObject.name == "SettingsPageSoundButton")
           {
+            AudioSource audioFX = GameObject.Find("CatchChickenButton").GetComponent<AudioSource>();
+            audioFX.mute = !audioFX.mute;
           }
           break;
         }
