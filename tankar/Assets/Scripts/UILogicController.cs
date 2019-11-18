@@ -9,6 +9,7 @@ public class UILogicController : MonoBehaviour
   // timer logic
   static float timer = 60.0f; // one minute timer
 
+  public static float GAME_TIME = 60.0f;
   public float lastSecond = timer;
   public Text timerText;
   // num chickens caught
@@ -79,7 +80,7 @@ public class UILogicController : MonoBehaviour
   void ResetAllData()
   {
     // Reset the timer.
-    timer = 60.0f; // one minute timer
+    timer = GAME_TIME; // one minute timer
     lastSecond = timer;
     timerText.text = timer.ToString("0:00");
 
@@ -125,6 +126,13 @@ public class UILogicController : MonoBehaviour
     // Turn on the screen we care about.
     ActivateCanvas(pageEnum);
     activePage = pageEnum;
+
+    switch (pageEnum)
+    {
+      case PagesEnum.GamePage:
+        StartGameplay();
+        break;
+    }
   }
 
 
@@ -134,7 +142,7 @@ public class UILogicController : MonoBehaviour
     gameplayUI.SetActive(false);
 
     // reset the game
-    timer = 60.0f; // one minute timer
+    timer = GAME_TIME; // one minute timer
     lastSecond = timer;
     timerText.text = timer.ToString("0:00");
 
@@ -146,8 +154,9 @@ public class UILogicController : MonoBehaviour
     gameplayUI.SetActive(true);
 
     // reset the game
-    timer = 60.0f; // one minute timer
+    timer = GAME_TIME; // one minute timer
     lastSecond = timer;
+    timerText.text = timer.ToString("0:00");
   }
 
   void UpdateGameplay()
@@ -162,9 +171,22 @@ public class UILogicController : MonoBehaviour
 
     if (timer < 0)
     {
-      gameplayUI
-.SetActive(false);
+      gameplayUI.SetActive(false);
+      GameObject confettiObject = GameObject.Find("ConfettiCelebration");
+      GameObject terrain = GameObject.Find("Terrain");
+      for (int i = Mathf.CeilToInt((float)-GameLogicController.CATCH_DISTANCE); i <= Mathf.FloorToInt((float)GameLogicController.CATCH_DISTANCE); i++)
+      {
+        for (int j = Mathf.CeilToInt((float)-GameLogicController.CATCH_DISTANCE); j <= Mathf.FloorToInt((float)GameLogicController.CATCH_DISTANCE); j++)
+        {
+          GameObject newConfettiObject = Instantiate(confettiObject, new Vector3(i, 0, j), Quaternion.identity);
+          newConfettiObject.transform.parent = terrain.transform;
+          newConfettiObject.transform.localScale += new Vector3(10, 10, 10);
+          newConfettiObject.GetComponent<ParticleSystem>().Play();
+          Destroy(newConfettiObject, 3.0f);
+        }
+      }
       // TODO(averylamp): Activate end game
+
     }
 
   }

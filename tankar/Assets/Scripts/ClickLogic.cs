@@ -123,7 +123,7 @@ public class ClickLogic : MonoBehaviour
         }
       case UILogicController.PagesEnum.GamePage:
         {
-          bool canCatchChicken = gameLogicController.GetChickenDistance() < gameLogicController.CATCH_DISTANCE;
+          bool canCatchChicken = gameLogicController.GetChickenDistance() < GameLogicController.CATCH_DISTANCE;
           if (lastClickedObject.name == "CloseButton")
           {
             uiLogicController.SwitchCanvas(UILogicController.PagesEnum.SetupPage);
