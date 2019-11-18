@@ -143,7 +143,7 @@ public class UILogicController : MonoBehaviour
         string name = PlayerPrefs.GetString("name");
         if (!name.Equals(""))
         {
-            GameObject.Find("SettingsPageName").GetComponent<InputField>().text = name;
+          GameObject.Find("SettingsPageName").GetComponent<InputField>().text = name;
         }
         break;
 
@@ -198,9 +198,9 @@ public class UILogicController : MonoBehaviour
       gameplayUI.SetActive(false);
       GameObject confettiObject = GameObject.Find("ConfettiCelebration");
       GameObject terrain = GameObject.Find("Terrain");
-      for (int i = Mathf.CeilToInt((float)-GameLogicController.CATCH_DISTANCE); i <= Mathf.FloorToInt((float)GameLogicController.CATCH_DISTANCE); i++)
+      for (float i = Mathf.Ceil((float)-GameLogicController.CATCH_DISTANCE); i <= Mathf.FloorToInt((float)GameLogicController.CATCH_DISTANCE); i += 0.5f)
       {
-        for (int j = Mathf.CeilToInt((float)-GameLogicController.CATCH_DISTANCE); j <= Mathf.FloorToInt((float)GameLogicController.CATCH_DISTANCE); j++)
+        for (float j = Mathf.Ceil((float)-GameLogicController.CATCH_DISTANCE); j <= Mathf.FloorToInt((float)GameLogicController.CATCH_DISTANCE); j += 0.5f)
         {
           GameObject newConfettiObject = Instantiate(confettiObject, new Vector3(i, 0, j), Quaternion.identity);
           newConfettiObject.transform.parent = terrain.transform;
