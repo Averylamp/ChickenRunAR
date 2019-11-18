@@ -5,6 +5,7 @@ using UnityEngine.XR.ARFoundation;
 using UnityEngine.UI;
 
 
+
 // Example of click on the canvas:
 // https://answers.unity.com/questions/1526663/detect-click-on-canvas.html
 
@@ -138,10 +139,15 @@ public class ClickLogic : MonoBehaviour
         {
           if (lastClickedObject.name == "SettingsCloseButton")
           {
+            string name = GameObject.Find("SettingsPageName").GetComponent<InputField>().text;
+            PlayerPrefs.SetString("name", name);
+            PlayerPrefs.Save();
+            Debug.Log(PlayerPrefs.GetString("name"));
             uiLogicController.SwitchCanvas(UILogicController.PagesEnum.LandingPage);
           }
           else if (lastClickedObject.name == "SettingsNameInputField")
           {
+            
           }
           else if (lastClickedObject.name == "SettingsPageMusicButton")
           {
