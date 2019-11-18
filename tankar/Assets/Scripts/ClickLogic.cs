@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.XR.ARFoundation;
+using UnityEngine.UI;
 
 
 // Example of click on the canvas:
@@ -104,7 +105,7 @@ public class ClickLogic : MonoBehaviour
           }
           else if (lastClickedObject.name == "SettingsButton")
           {
-            // TODO(Moin): add settings popup menu.
+            uiLogicController.SwitchCanvas(UILogicController.PagesEnum.SettingsPage);
           }
           break;
         }
@@ -132,6 +133,25 @@ public class ClickLogic : MonoBehaviour
             UILogicController.numChickensCaught += 1;
             GameObject.Find("ChickenCount").GetComponent<UnityEngine.UI.Text>().text = UILogicController.numChickensCaught.ToString();
             gameLogicController.RemoveAndReplaceChicken();
+          }
+          break;
+        }
+      case UILogicController.PagesEnum.SettingsPage:
+        {
+          if (lastClickedObject.name == "SettingsCloseButton")
+          {
+            uiLogicController.SwitchCanvas(UILogicController.PagesEnum.LandingPage);
+          }
+          else if (lastClickedObject.name == "SettingsNameInputField")
+          {
+            Debug.Log("HERE.");
+            // GameObject.Find("SettingsNameInputField").GetComponent<InputField>().Select();
+          }
+          else if (lastClickedObject.name == "SettingsPageMusicButton")
+          {
+          }
+          else if (lastClickedObject.name == "SettingsPageSoundButton")
+          {
           }
           break;
         }
