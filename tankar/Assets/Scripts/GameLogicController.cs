@@ -5,7 +5,7 @@ using System;
 public class GameLogicController : MonoBehaviour
 {
 
-  public double CATCH_DISTANCE = 2.5;
+  public static double CATCH_DISTANCE = 2.5;
   private const float CHICKEN_RESPAWN_RANGE = 3.3f;
 
   private float chickenDistance = 100;
@@ -16,7 +16,7 @@ public class GameLogicController : MonoBehaviour
     chicken = GameObject.Find("Chicken");
     if (Application.platform == RuntimePlatform.IPhonePlayer)
     {
-      CATCH_DISTANCE = 0.5;
+      GameLogicController.CATCH_DISTANCE = 0.5;
       Destroy(GameObject.Find("Human Cube"));
     }
 
@@ -72,6 +72,7 @@ public class GameLogicController : MonoBehaviour
     GameObject confettiSpawnObject = GameObject.Find("ConfettiSpawn");
     confettiSpawnObject = Instantiate(confettiSpawnObject, newChickenPosition, Quaternion.identity);
     confettiSpawnObject.GetComponent<ParticleSystem>().Play();
+    Destroy(confettiSpawnObject, 3.0f);
   }
 
   public float GetChickenDistance()
