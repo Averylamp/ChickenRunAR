@@ -172,8 +172,6 @@ public class ClickLogic : MonoBehaviour
           else if (lastClickedObject.name == "SettingsPageSoundButton")
           {
             Text buttonText = lastClickedObject.GetComponentInChildren<Text>();
-            audioFX.mute = !audioFX.mute;
-
             if (audioFX.mute)
             {
                 buttonText.text = "SOUND EFFECTS OFF";
@@ -181,6 +179,7 @@ public class ClickLogic : MonoBehaviour
             {
                 buttonText.text = "SOUND EFFECTS ON";
             }
+            audioFX.mute = !audioFX.mute;
           }
           break;
         }
