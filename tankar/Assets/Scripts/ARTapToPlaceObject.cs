@@ -24,9 +24,8 @@ public class ARTapToPlaceObject : MonoBehaviour
         UpdatePlacementPose();
         UpdatePlacementIndicator();
 
-        // Handle clicks in the real world.
-        // TODO(ethan): only execute this if not clicking on UI button, etc.
-        if (placementPoseIsValid && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && !ClickLogic.OnUI()) {
+        // Handle holding on the the real world.
+        if (placementPoseIsValid && Input.touchCount > 0 && !ClickLogic.OnUI()) {
             PlaceTerrain();
         }
     }
