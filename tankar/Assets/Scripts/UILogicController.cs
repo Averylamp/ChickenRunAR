@@ -123,12 +123,19 @@ public class UILogicController : MonoBehaviour
     // Reset all screens.
     ResetAllCanvases();
 
+    // Turn off coaching.
+    ActivateCoaching(false);
+
     // Turn on the screen we care about.
     ActivateCanvas(pageEnum);
     activePage = pageEnum;
 
     switch (pageEnum)
     {
+      case PagesEnum.SetupPage:
+        // Turn on coaching.
+        ActivateCoaching(true);
+        break;
       case PagesEnum.GamePage:
         StartGameplay();
         break;
@@ -165,6 +172,15 @@ public class UILogicController : MonoBehaviour
     timer = GAME_TIME; // one minute timer
     lastSecond = timer;
     timerText.text = timer.ToString("0:00");
+  }
+
+  // Turns on coaching mode.
+  void ActivateCoaching(bool status)
+  {
+    if (Application.platform == RuntimePlatform.IPhonePlayer)
+    {
+      GameObject.Find("AR Session").GetComponent<ARKitCoachingOverlay>().ActivateCoachingMode(status);
+    }
   }
 
   void UpdateGameplay()

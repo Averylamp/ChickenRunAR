@@ -92,6 +92,10 @@ public class ClickLogic : MonoBehaviour
           if (lastClickedObject.name == "SinglePlayerButton")
           {
             uiLogicController.SwitchCanvas(UILogicController.PagesEnum.SetupPage);
+            if (Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+              GameObject.Find("AR Session").GetComponent<ARKitCoachingOverlay>().ActivateCoaching(true);
+            }
           }
           else if (lastClickedObject.name == "MultiPlayerButton")
           {
@@ -168,8 +172,6 @@ public class ClickLogic : MonoBehaviour
           else if (lastClickedObject.name == "SettingsPageSoundButton")
           {
             Text buttonText = lastClickedObject.GetComponentInChildren<Text>();
-            audioFX.mute = !audioFX.mute;
-
             if (audioFX.mute)
             {
                 buttonText.text = "SOUND EFFECTS OFF";
@@ -177,6 +179,7 @@ public class ClickLogic : MonoBehaviour
             {
                 buttonText.text = "SOUND EFFECTS ON";
             }
+            audioFX.mute = !audioFX.mute;
           }
           break;
         }
