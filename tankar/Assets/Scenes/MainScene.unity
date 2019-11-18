@@ -2103,8 +2103,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.0496396e+12, y: 1.8470472e+25, z: 2.2137467e-10,
-    w: 7.2368274e+25}
+  m_BoundingSphereOverride: {x: 0.0546875, y: 0.08203125, z: 0.05078125, w: -0.025390625}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -3432,8 +3431,8 @@ GameObject:
   - component: {fileID: 1044847402}
   - component: {fileID: 1044847401}
   - component: {fileID: 1044847400}
-  - component: {fileID: 1044847399}
   - component: {fileID: 1044847403}
+  - component: {fileID: 1044847399}
   m_Layer: 0
   m_Name: AR Session
   m_TagString: Untagged
@@ -3450,11 +3449,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1044847398}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 350e645d65dda17489fc90a5a6976668, type: 3}
+  m_Script: {fileID: 11500000, guid: 98acb62f1a9ad447ba88d4cd138f32d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementIndicator: {fileID: 40919614}
-  terrainToPlace: {fileID: 6739985274832404406}
+  m_ServiceType: chicken-run-ar
 --- !u!114 &1044847400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6384,6 +6382,7 @@ GameObject:
   - component: {fileID: 1829861153}
   - component: {fileID: 1829861154}
   - component: {fileID: 1829861155}
+  - component: {fileID: 1829861156}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -6616,6 +6615,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1829861156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829861147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350e645d65dda17489fc90a5a6976668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placementIndicator: {fileID: 40919614}
+  terrainToPlace: {fileID: 6739985274832404406}
+  firstHoldOrTapCompleted: 0
 --- !u!1 &1840431996
 GameObject:
   m_ObjectHideFlags: 0

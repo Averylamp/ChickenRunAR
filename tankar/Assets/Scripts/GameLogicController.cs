@@ -128,7 +128,7 @@ public class GameLogicController : MonoBehaviour
       {
         percentDistance = 1.0f;
       }
-      Debug.Log(percentDistance);
+      // Debug.Log(percentDistance);
       catchDistanceBar.transform.localScale += new Vector3(percentDistance - catchDistanceBar.transform.localScale.x, 0, 0);
       catchImage.color = new Color((1f - percentDistance), percentDistance, 0.0f, 1.0f);
     }

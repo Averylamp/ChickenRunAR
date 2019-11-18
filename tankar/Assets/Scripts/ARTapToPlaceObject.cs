@@ -10,23 +10,44 @@ public class ARTapToPlaceObject : MonoBehaviour
     public GameObject placementIndicator;
     public GameObject terrainToPlace;
 
+    UILogicController uiLogicController;
+
     private ARRaycastManager arOrigin;
     private Pose placementPose;
     private bool placementPoseIsValid = false;
+    public bool firstHoldOrTapCompleted;
 
     void Start()
     {
         arOrigin = FindObjectOfType<ARRaycastManager>();
+        uiLogicController = GetComponent<UILogicController>();
+
+        // Put the terrain high so that it can't be seen.
+        Vector3 position = new Vector3(0.0f, 1000.0f, 0.0f);
+        firstHoldOrTapCompleted = false;
+        terrainToPlace.transform.position = position;
     }
 
+    // The update function for placing the field. Initially it moves with the placement indicator.
+    // After the initial hold/tap, it won't be stuck to the marker.
     void Update()
     {
-        UpdatePlacementPose();
-        UpdatePlacementIndicator();
+        if (uiLogicController.activePage == UILogicController.PagesEnum.SetupPage)
+        {
+            // Update pose for terrain and placement indicator.
+            UpdatePlacementPose();
+            UpdatePlacementIndicator();
 
-        // Handle holding on the the real world.
-        if (placementPoseIsValid && Input.touchCount > 0 && !ClickLogic.OnUI()) {
-            PlaceTerrain();
+            // Handle holding on the the real world.
+            bool holdOrTap = Input.touchCount > 0 && !ClickLogic.OnUI();
+            if (placementPoseIsValid && (!firstHoldOrTapCompleted || holdOrTap)) {
+                if (holdOrTap) {
+                    firstHoldOrTapCompleted = true;
+                }
+                PlaceTerrain();
+            }
+        } else {
+            placementIndicator.SetActive(false);
         }
     }
 
