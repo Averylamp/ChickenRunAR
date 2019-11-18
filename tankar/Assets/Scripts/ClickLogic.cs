@@ -13,19 +13,18 @@ public class ClickLogic : MonoBehaviour
 
   GameLogicController gameLogicController;
   UILogicController uiLogicController;
-  AudioSource audioMusic;
   public bool mouseButtonDown = false;
   public bool fingerTouchDown = false;
-
+  AudioSource audioFX;
 
   // Start is called before the first frame update
   void Start()
   {
     Debug.Log("Starting ClickLogic.");
-
+    audioFX = GameObject.Find("CatchChickenButton").GetComponent<AudioSource>();
     gameLogicController = GetComponent<GameLogicController>();
     uiLogicController = GetComponent<UILogicController>();
-    audioMusic = GetComponent<AudioSource>();
+    AudioSource audioMusic = GetComponent<AudioSource>();
     audioMusic.Play(0);
   }
 
@@ -146,6 +145,8 @@ public class ClickLogic : MonoBehaviour
           }
           else if (lastClickedObject.name == "SettingsPageMusicButton")
           {
+            AudioSource audioMusic = GetComponent<AudioSource>();
+
             Text buttonText = lastClickedObject.GetComponentInChildren<Text>();
 
             if (audioMusic.isPlaying)
@@ -160,8 +161,16 @@ public class ClickLogic : MonoBehaviour
           }
           else if (lastClickedObject.name == "SettingsPageSoundButton")
           {
-            AudioSource audioFX = GameObject.Find("CatchChickenButton").GetComponent<AudioSource>();
+            Text buttonText = lastClickedObject.GetComponentInChildren<Text>();
             audioFX.mute = !audioFX.mute;
+
+            if (audioFX.mute)
+            {
+                buttonText.text = "SOUND EFFECTS OFF";
+            } else
+            {
+                buttonText.text = "SOUND EFFECTS ON";
+            }
           }
           break;
         }
