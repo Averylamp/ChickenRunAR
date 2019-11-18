@@ -92,6 +92,10 @@ public class ClickLogic : MonoBehaviour
           if (lastClickedObject.name == "SinglePlayerButton")
           {
             uiLogicController.SwitchCanvas(UILogicController.PagesEnum.SetupPage);
+            if (Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+              GameObject.Find("AR Session").GetComponent<ARKitCoachingOverlay>().ActivateCoaching(true);
+            }
           }
           else if (lastClickedObject.name == "MultiPlayerButton")
           {
