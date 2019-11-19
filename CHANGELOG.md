@@ -24,6 +24,8 @@
 | Gameplay: Leaderboard Page | Simple leaderboard mock used currently with scores available. | Need to integrate data source, local or networked |
 | Gameplay: Setup Flow Page | Uses the standard plane finding tutorial available by Apple to standardize iconography for Augmented Reality plane finding | Need to add iconography/text explainations to help users understand how to place the field |
 | Gameplay: Game Music Player and Chicken FXs | Created a sound controller that is togglable and allows for playing sounds in specific moments as necessary for the game |  |
+| Gameplay: Confetti spawner integrated | Plays the confetti spawner when a chicken is caught/spawned and at end game.  Makes it more clear when a chicken is caught  |
+| Gameplay: Chicken Death Animation | After the chicken is caught, the death animation is played, making it clear that the chicken was caught | |
 
 #### Notes / Next Steps: 
 - Bug Discovered: Colliders in corner of fence do not prevent the chicken from escaping
@@ -38,6 +40,7 @@
 | Gameplay: Catch button Turns Green | The Catch button changes color and becomes green when you are within range of the chicken and you can catch the chicken  | |
 | Gameplay: Range Detector | Make it more obvious when you are close to the chicken and exactly how close you have to be to the chicken in order. | |
 | Gameplay: Asset Set/Style | Picked an asset set that will allow us to create UI in a theme.  This asset set will be used in all parts of the app | |
+| Gameplay: Confetti spawner asset | Created a confetti spawner to used in certain situations to get the user's attention or display a change in AR | |
 
 #### Notes / Next Steps: 
 - 
