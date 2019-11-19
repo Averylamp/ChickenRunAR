@@ -105,7 +105,7 @@ public class ClickLogic : MonoBehaviour
           else if (lastClickedObject.name == "CatchChickenButton" && canCatchChicken)
           {
             UILogicController.numChickensCaught += 1;
-            SoundController.PlayChickenCaughtFX();
+            SoundController.instance.PlayChickenCaughtFX();
             GameObject.Find("ChickenCount").GetComponent<UnityEngine.UI.Text>().text = UILogicController.numChickensCaught.ToString();
             gameLogicController.RemoveAndReplaceChicken();
           }

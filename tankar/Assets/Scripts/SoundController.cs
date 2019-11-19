@@ -4,14 +4,38 @@ using UnityEngine;
 
 public class SoundController : MonoBehaviour
 {
+  public static SoundController instance = null;
+  public AudioSource chickenCatchFX;
+  public AudioSource audioMusic;
 
-  public static AudioSource chickenCatchFX;
-  public static AudioSource audioMusic;
-
+  private static string PREF_MUSIC_KEY = "PREF_MUSIC_KEY";
+  private static string PREF_FXS_KEY = "PREF_FXS_KEY";
   // Start is called before the first frame update
   void Start()
   {
-    audioMusic.Play();
+    if (PlayerPrefs.GetInt(PREF_MUSIC_KEY, 1) == 1)
+    {
+      audioMusic.Play();
+    }
+
+  }
+
+  void Awake()
+  {
+    //Check if instance already exists
+    if (instance == null)
+
+      //if not, set instance to this
+      instance = this;
+
+    //If instance already exists and it's not this:
+    else if (instance != this)
+
+      //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
+      Destroy(gameObject);
+
+    //Sets this to not be destroyed when reloading scene
+    DontDestroyOnLoad(gameObject);
   }
 
   // Update is called once per frame
@@ -20,13 +44,48 @@ public class SoundController : MonoBehaviour
 
   }
 
-  public static void SetMusicPreference(bool musicOn)
+  public bool GetMusicPreference()
   {
-
+    return PlayerPrefs.GetInt(PREF_MUSIC_KEY, 1) == 1;
   }
-  public static void PlayChickenCaughtFX()
+
+  public bool GetFXSPreference()
   {
-    chickenCatchFX.Play();
+    return PlayerPrefs.GetInt(PREF_FXS_KEY, 1) == 1;
+  }
+
+  public void SetMusicPreference(bool musicOn)
+  {
+    PlayerPrefs.SetInt(PREF_MUSIC_KEY, musicOn ? 1 : 0);
+    if (musicOn)
+    {
+      audioMusic.Play();
+    }
+    else
+    {
+      audioMusic.Stop();
+    }
+  }
+
+  public void SetChickenCatchFXPreference(bool fxsOn)
+  {
+    PlayerPrefs.SetInt(PREF_FXS_KEY, fxsOn ? 1 : 0);
+    if (fxsOn)
+    {
+      chickenCatchFX.Play();
+    }
+    else
+    {
+      chickenCatchFX.Stop();
+    }
+  }
+  public void PlayChickenCaughtFX()
+  {
+    if (PlayerPrefs.GetInt(PREF_FXS_KEY, 1) == 1)
+    {
+      chickenCatchFX.Play();
+    }
+
   }
 
 }
