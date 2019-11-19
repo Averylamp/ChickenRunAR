@@ -15,6 +15,9 @@ public class UILogicController : MonoBehaviour
   // num chickens caught
   static public int numChickensCaught = 0;
   // Enum for all of the pages.
+
+  AudioSource audioFX;
+
   public enum PagesEnum
   {
     [Description("SetupPage")]
@@ -70,10 +73,7 @@ public class UILogicController : MonoBehaviour
 
     // Switch to the Landing Page, where the game should start.
     SwitchCanvas(PagesEnum.LandingPage);
-    Debug.Log("Finding Timer Text");
-    Debug.Log(GameObject.Find("TimerText"));
-    // Debug.Log(GameObject.Find("TimerText").GetComponent<Text>());
-    // timerText = GameObject.Find("TimerText").GetComponent<Text>();
+
   }
 
   // Call this at every screen change to reset all the game data.
@@ -215,6 +215,91 @@ public class UILogicController : MonoBehaviour
 
   }
 
+  public void LandingLageClick(GameObject clickedObject)
+  {
+    string buttonName = clickedObject.name;
+    if (buttonName == "SinglePlayerButton")
+    {
+      SwitchCanvas(UILogicController.PagesEnum.SetupPage);
+      if (Application.platform == RuntimePlatform.IPhonePlayer)
+      {
+        GameObject.Find("AR Session").GetComponent<ARKitCoachingOverlay>().ActivateCoaching(true);
+      }
+    }
+    else if (buttonName == "MultiPlayerButton")
+    {
+
+    }
+    else if (buttonName == "LeaderboardButton")
+    {
+      SwitchCanvas(UILogicController.PagesEnum.LeaderboardPage);
+    }
+    else if (buttonName == "SettingsButton")
+    {
+      SwitchCanvas(UILogicController.PagesEnum.SettingsPage);
+    }
+  }
+
+  public void SetupPageClick(GameObject clickedObject)
+  {
+    string buttonName = clickedObject.name;
+    if (buttonName == "StartButton")
+    {
+      SwitchCanvas(UILogicController.PagesEnum.GamePage);
+    }
+    else if (buttonName == "CloseButton")
+    {
+      SwitchCanvas(UILogicController.PagesEnum.LandingPage);
+    }
+
+  }
+
+  public void SettingsPageClick(GameObject clickedObject)
+  {
+    string buttonName = clickedObject.name;
+    if (buttonName == "SettingsCloseButton")
+    {
+      string name = GameObject.Find("SettingsPageName").GetComponent<InputField>().text;
+      PlayerPrefs.SetString("name", name);
+      PlayerPrefs.Save();
+      Debug.Log(PlayerPrefs.GetString("name"));
+      SwitchCanvas(UILogicController.PagesEnum.LandingPage);
+    }
+    else if (buttonName == "SettingsNameInputField")
+    {
+
+    }
+    else if (buttonName == "SettingsPageMusicButton")
+    {
+      AudioSource audioMusic = GetComponent<AudioSource>();
+
+      Text buttonText = clickedObject.GetComponentInChildren<Text>();
+
+      if (audioMusic.isPlaying)
+      {
+        buttonText.text = "Music On";
+        audioMusic.Stop();
+      }
+      else
+      {
+        buttonText.text = "Music Off";
+        audioMusic.Play();
+      }
+    }
+    else if (buttonName == "SettingsPageSoundButton")
+    {
+      Text buttonText = clickedObject.GetComponentInChildren<Text>();
+      if (audioFX.isPlaying)
+      {
+        buttonText.text = "Sound Effects On";
+      }
+      else
+      {
+        buttonText.text = "Sound Effects Off";
+      }
+      audioFX.mute = !audioFX.mute;
+    }
+  }
 
   // Update is called once per frame
   void Update()

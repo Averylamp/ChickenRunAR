@@ -16,17 +16,15 @@ public class ClickLogic : MonoBehaviour
   UILogicController uiLogicController;
   public bool mouseButtonDown = false;
   public bool fingerTouchDown = false;
-  AudioSource audioFX;
+
 
   // Start is called before the first frame update
   void Start()
   {
     Debug.Log("Starting ClickLogic.");
-    audioFX = GameObject.Find("CatchChickenButton").GetComponent<AudioSource>();
+
     gameLogicController = GetComponent<GameLogicController>();
     uiLogicController = GetComponent<UILogicController>();
-    AudioSource audioMusic = GetComponent<AudioSource>();
-    audioMusic.Play(0);
   }
 
   // Update is called once per frame
@@ -89,38 +87,12 @@ public class ClickLogic : MonoBehaviour
     {
       case UILogicController.PagesEnum.LandingPage:
         {
-          if (lastClickedObject.name == "SinglePlayerButton")
-          {
-            uiLogicController.SwitchCanvas(UILogicController.PagesEnum.SetupPage);
-            if (Application.platform == RuntimePlatform.IPhonePlayer)
-            {
-              GameObject.Find("AR Session").GetComponent<ARKitCoachingOverlay>().ActivateCoaching(true);
-            }
-          }
-          else if (lastClickedObject.name == "MultiPlayerButton")
-          {
-
-          }
-          else if (lastClickedObject.name == "LeaderboardButton")
-          {
-            uiLogicController.SwitchCanvas(UILogicController.PagesEnum.LeaderboardPage);
-          }
-          else if (lastClickedObject.name == "SettingsButton")
-          {
-            uiLogicController.SwitchCanvas(UILogicController.PagesEnum.SettingsPage);
-          }
+          uiLogicController.LandingLageClick(lastClickedObject);
           break;
         }
       case UILogicController.PagesEnum.SetupPage:
         {
-          if (lastClickedObject.name == "StartButton")
-          {
-            uiLogicController.SwitchCanvas(UILogicController.PagesEnum.GamePage);
-          }
-          else if (lastClickedObject.name == "CloseButton")
-          {
-            uiLogicController.SwitchCanvas(UILogicController.PagesEnum.LandingPage);
-          }
+          uiLogicController.SetupPageClick(lastClickedObject);
           break;
         }
       case UILogicController.PagesEnum.GamePage:
@@ -133,7 +105,7 @@ public class ClickLogic : MonoBehaviour
           else if (lastClickedObject.name == "CatchChickenButton" && canCatchChicken)
           {
             UILogicController.numChickensCaught += 1;
-            lastClickedObject.GetComponent<AudioSource>().Play();
+            SoundController.PlayChickenCaughtFX();
             GameObject.Find("ChickenCount").GetComponent<UnityEngine.UI.Text>().text = UILogicController.numChickensCaught.ToString();
             gameLogicController.RemoveAndReplaceChicken();
           }
@@ -141,46 +113,7 @@ public class ClickLogic : MonoBehaviour
         }
       case UILogicController.PagesEnum.SettingsPage:
         {
-          if (lastClickedObject.name == "SettingsCloseButton")
-          {
-            string name = GameObject.Find("SettingsPageName").GetComponent<InputField>().text;
-            PlayerPrefs.SetString("name", name);
-            PlayerPrefs.Save();
-            Debug.Log(PlayerPrefs.GetString("name"));
-            uiLogicController.SwitchCanvas(UILogicController.PagesEnum.LandingPage);
-          }
-          else if (lastClickedObject.name == "SettingsNameInputField")
-          {
-            
-          }
-          else if (lastClickedObject.name == "SettingsPageMusicButton")
-          {
-            AudioSource audioMusic = GetComponent<AudioSource>();
-
-            Text buttonText = lastClickedObject.GetComponentInChildren<Text>();
-
-            if (audioMusic.isPlaying)
-            {
-                buttonText.text = "MUSIC ON";
-                audioMusic.Stop();
-            } else
-            {
-                buttonText.text = "MUSIC OFF";
-                audioMusic.Play();
-            }
-          }
-          else if (lastClickedObject.name == "SettingsPageSoundButton")
-          {
-            Text buttonText = lastClickedObject.GetComponentInChildren<Text>();
-            if (audioFX.mute)
-            {
-                buttonText.text = "SOUND EFFECTS OFF";
-            } else
-            {
-                buttonText.text = "SOUND EFFECTS ON";
-            }
-            audioFX.mute = !audioFX.mute;
-          }
+          uiLogicController.SettingsPageClick(lastClickedObject);
           break;
         }
       case UILogicController.PagesEnum.LeaderboardPage:
