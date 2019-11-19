@@ -30,8 +30,8 @@ public class UILogicController : MonoBehaviour
     SettingsPage,
     [Description("LandingPage")]
     LandingPage,
-    [Description("InteractiveTutorialPage")]
-    InteractiveTutorialPage,
+    [Description("ViewerPage")]
+    ViewerPage,
     [Description("InstructionsPage")]
     InstructionsPage
   }
@@ -226,9 +226,9 @@ public class UILogicController : MonoBehaviour
         GameObject.Find("AR Session").GetComponent<ARKitCoachingOverlay>().ActivateCoaching(true);
       }
     }
-    else if (buttonName == "MultiPlayerButton")
+    else if (buttonName == "ViewerButton")
     {
-
+      SwitchCanvas(UILogicController.PagesEnum.ViewerPage);
     }
     else if (buttonName == "LeaderboardButton")
     {
@@ -251,7 +251,19 @@ public class UILogicController : MonoBehaviour
     {
       SwitchCanvas(UILogicController.PagesEnum.LandingPage);
     }
+  }
 
+  public void ViewerPageClick(GameObject clickedObject)
+  {
+    string buttonName = clickedObject.name;
+    if (buttonName == "ViewerCloseButton")
+    {
+      SwitchCanvas(UILogicController.PagesEnum.LandingPage);
+    }
+    else if (buttonName == "ViewerJoinSessionButton")
+    {
+      // TODO:
+    }
   }
 
   public void SettingsPageClick(GameObject clickedObject)

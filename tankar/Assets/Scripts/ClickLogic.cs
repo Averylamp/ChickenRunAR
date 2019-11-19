@@ -116,6 +116,11 @@ public class ClickLogic : MonoBehaviour
           uiLogicController.SettingsPageClick(lastClickedObject);
           break;
         }
+      case UILogicController.PagesEnum.ViewerPage:
+        {
+          uiLogicController.ViewerPageClick(lastClickedObject);
+          break;
+        }
       case UILogicController.PagesEnum.LeaderboardPage:
         {
           if (lastClickedObject.name == "LeaderboardCloseButton")
