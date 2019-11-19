@@ -15,9 +15,6 @@ public class UILogicController : MonoBehaviour
   // num chickens caught
   static public int numChickensCaught = 0;
   // Enum for all of the pages.
-
-  AudioSource audioFX;
-
   public enum PagesEnum
   {
     [Description("SetupPage")]
@@ -283,33 +280,33 @@ public class UILogicController : MonoBehaviour
     }
     else if (buttonName == "SettingsPageMusicButton")
     {
-      AudioSource audioMusic = GetComponent<AudioSource>();
 
       Text buttonText = clickedObject.GetComponentInChildren<Text>();
 
-      if (audioMusic.isPlaying)
+      if (SoundController.instance.GetMusicPreference())
       {
         buttonText.text = "Music On";
-        audioMusic.Stop();
+        SoundController.instance.SetMusicPreference(false);
       }
       else
       {
         buttonText.text = "Music Off";
-        audioMusic.Play();
+        SoundController.instance.SetMusicPreference(true);
       }
     }
     else if (buttonName == "SettingsPageSoundButton")
     {
       Text buttonText = clickedObject.GetComponentInChildren<Text>();
-      if (audioFX.isPlaying)
+      if (SoundController.instance.GetFXSPreference())
       {
         buttonText.text = "Sound Effects On";
+        SoundController.instance.SetChickenCatchFXPreference(false);
       }
       else
       {
         buttonText.text = "Sound Effects Off";
+        SoundController.instance.SetChickenCatchFXPreference(true);
       }
-      audioFX.mute = !audioFX.mute;
     }
   }
 
