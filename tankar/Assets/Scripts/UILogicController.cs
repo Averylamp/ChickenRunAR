@@ -6,6 +6,8 @@ using System.ComponentModel;
 public class UILogicController : MonoBehaviour
 {
 
+  GameLogicController gameLogicController;
+
   // timer logic
   static float timer = 60.0f; // one minute timer
 
@@ -17,20 +19,16 @@ public class UILogicController : MonoBehaviour
   // Enum for all of the pages.
   public enum PagesEnum
   {
+    [Description("LandingPage")]
+    LandingPage,
     [Description("SetupPage")]
     SetupPage,
     [Description("GamePage")]
     GamePage,
-    [Description("LeaderboardPage")]
-    LeaderboardPage,
     [Description("SettingsPage")]
     SettingsPage,
-    [Description("LandingPage")]
-    LandingPage,
-    [Description("ViewerPage")]
-    ViewerPage,
-    [Description("InstructionsPage")]
-    InstructionsPage
+    [Description("EndGamePage")]
+    EndGamePage
   }
 
   // Keep track of the active page.
@@ -84,8 +82,8 @@ public class UILogicController : MonoBehaviour
     // TODO: Reset the chicken count.
     numChickensCaught = 0;
     GameObject.Find("ChickenCount").GetComponent<UnityEngine.UI.Text>().text = numChickensCaught.ToString();
-
-    // TODO: handle the placement persisting
+    // Set initial speed.
+    GameObject.Find("Canvas").GetComponent<GameLogicController>().ResetChickenSpeed();
   }
 
 
@@ -114,8 +112,6 @@ public class UILogicController : MonoBehaviour
   // Switch to the new canvas and set the active page.
   public void SwitchCanvas(PagesEnum pageEnum)
   {
-    // TODO: Reset all the data.
-    // ResetAllData();
 
     // Reset all screens.
     ResetAllCanvases();
@@ -134,16 +130,19 @@ public class UILogicController : MonoBehaviour
         ActivateCoaching(true);
         break;
       case PagesEnum.GamePage:
+        ResetAllData();
         StartGameplay();
         break;
-      case PagesEnum.SettingsPage:
-        string name = PlayerPrefs.GetString("name");
-        if (!name.Equals(""))
-        {
-          GameObject.Find("SettingsPageName").GetComponent<InputField>().text = name;
+      case PagesEnum.EndGamePage:
+        string end_game_string;
+        if (numChickensCaught == 1) {
+          end_game_string = "You Caught " + numChickensCaught.ToString() + " Chicken";
+        } else {
+          end_game_string = "You Caught " + numChickensCaught.ToString() + " Chickens";
         }
+        GameObject.Find("EndGamePageTitleText").GetComponent<UnityEngine.UI.Text>().text = end_game_string;
+        ResetAllData();
         break;
-
     }
   }
 
@@ -207,7 +206,7 @@ public class UILogicController : MonoBehaviour
         }
       }
       // TODO(averylamp): Activate end game
-
+      SwitchCanvas(UILogicController.PagesEnum.EndGamePage);
     }
 
   }
@@ -223,13 +222,9 @@ public class UILogicController : MonoBehaviour
         GameObject.Find("AR Session").GetComponent<ARKitCoachingOverlay>().ActivateCoaching(true);
       }
     }
-    else if (buttonName == "ViewerButton")
+    else if (buttonName == "TutorialButton")
     {
-      SwitchCanvas(UILogicController.PagesEnum.ViewerPage);
-    }
-    else if (buttonName == "LeaderboardButton")
-    {
-      SwitchCanvas(UILogicController.PagesEnum.LeaderboardPage);
+      Application.OpenURL("http://averylamp.me/ChickenRunARTutorial.html");
     }
     else if (buttonName == "SettingsButton")
     {
@@ -242,6 +237,7 @@ public class UILogicController : MonoBehaviour
     string buttonName = clickedObject.name;
     if (buttonName == "StartButton")
     {
+
       SwitchCanvas(UILogicController.PagesEnum.GamePage);
     }
     else if (buttonName == "CloseButton")
@@ -268,10 +264,6 @@ public class UILogicController : MonoBehaviour
     string buttonName = clickedObject.name;
     if (buttonName == "SettingsCloseButton")
     {
-      string name = GameObject.Find("SettingsPageName").GetComponent<InputField>().text;
-      PlayerPrefs.SetString("name", name);
-      PlayerPrefs.Save();
-      Debug.Log(PlayerPrefs.GetString("name"));
       SwitchCanvas(UILogicController.PagesEnum.LandingPage);
     }
     else if (buttonName == "SettingsNameInputField")
@@ -307,6 +299,19 @@ public class UILogicController : MonoBehaviour
         buttonText.text = "Sound Effects Off";
         SoundController.instance.SetChickenCatchFXPreference(true);
       }
+    }
+  }
+
+  public void EndGamePageClick(GameObject clickedObject)
+  {
+    string buttonName = clickedObject.name;
+    if (buttonName == "PlayAgainButton")
+    {
+      SwitchCanvas(UILogicController.PagesEnum.GamePage);
+    }
+    else if (buttonName == "EndGameHomeButton")
+    {
+      SwitchCanvas(UILogicController.PagesEnum.LandingPage);
     }
   }
 

@@ -76,6 +76,11 @@ public class GameLogicController : MonoBehaviour
     Destroy(confettiSpawnObject, 3.0f);
   }
 
+  public void ResetChickenSpeed() {
+    ChickenCharacter.chickenSpeed = 1f;
+    ChickenCharacter.chickenSpeedBase = 0.5f;
+  }
+
   public float GetChickenDistance()
   {
     return chickenDistance;

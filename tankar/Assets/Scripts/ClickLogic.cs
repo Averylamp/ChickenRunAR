@@ -116,17 +116,9 @@ public class ClickLogic : MonoBehaviour
           uiLogicController.SettingsPageClick(lastClickedObject);
           break;
         }
-      case UILogicController.PagesEnum.ViewerPage:
+      case UILogicController.PagesEnum.EndGamePage:
         {
-          uiLogicController.ViewerPageClick(lastClickedObject);
-          break;
-        }
-      case UILogicController.PagesEnum.LeaderboardPage:
-        {
-          if (lastClickedObject.name == "LeaderboardCloseButton")
-          {
-            uiLogicController.SwitchCanvas(UILogicController.PagesEnum.LandingPage);
-          }
+          uiLogicController.EndGamePageClick(lastClickedObject);
           break;
         }
       default: break;
