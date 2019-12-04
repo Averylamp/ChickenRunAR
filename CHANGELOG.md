@@ -1,5 +1,26 @@
 # TankAR Changelog
 
+---
+
+### Week of December 8
+
+| Actions | Goals | Problems |
+| ------  | ----- | -------- |
+
+#### Notes / Next Steps: 
+- 
+
+
+---
+
+### Week of December 1
+
+| Actions | Goals | Problems |
+| ------  | ----- | -------- |
+
+#### Notes / Next Steps: 
+- 
+
 
 ---
 
@@ -7,9 +28,14 @@
 
 | Actions | Goals | Problems |
 | ------  | ----- | -------- |
+| Gameplay: Persistent Settings | Persist settings throughout uses.  Allow users to change their settings and have the same saved settings when coming back and reopening the app.  |  |
+| Gameplay: Setup Field Changes | We wanted a more intuitive way to setup the field.  One change that was made was the ability to drag the field around in setup page instead of tapping multiple times to place it each time |  |
+| Gameplay: Multiplayer Screen (Viewer mode) | Added a multiplayer viewer mode screen with stubs for multipeer connectivity.  The screen displays logs and also shows that multiple devices connect.  It uses a static identifier for the room. | It has been difficult working with multipeer connectivity and syncing the world maps between screens |
+| Gameplay: Chicken Respawn animation | Added an animation for the chicken respawning in a new location.  Makes it more clear that the chicken just respawned and also makes it easier for the user to catch onto the direction of where the next chicken appears.  | |
+| Bug Fix: Removes arrow after game scene is active | The arrow projected into the augmented reality world was creating some collider issues and producing some unexpected behavior. | |
 
 #### Notes / Next Steps: 
-- 
+- The addition of multipeer connectivity and viewer mode poses some unique challenges.  Syncing the world map should be possible, but it hasn't been working.  Also syncing chicken animations throughout multipeer devices without it appearing jerky will be diffulcult.  
 
 ---
 
