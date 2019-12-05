@@ -6,10 +6,16 @@
 
 | Actions | Goals | Problems |
 | ------  | ----- | -------- |
-| Gameplay: added settings page | We have no one to credit since we paid for all of our assets. | No problems occured. |
+| Gameplay: Added settings page | We have no one to credit since we paid for all of our assets. | No problems occured. |
+| Gameplay: Removed Leaderboard | Removed leaderboard for now as it could create bugs for final build | |
+| Gameplay: Removed View Mode | Viewer mode still had some amount of work to do so we removed it as it wasn't complete | |
+| Gameplay: Endgame Screen added | Endgame allows you to see your score and restart the game | |
+| Development: Modifies Build Settings | There were a lot of issues building for iPhone 11 as legacy shaders were decomissioned for those phones.  Switched from Gamma shaders to linear and now compiles for all devices | |
+| Assets: Created App Icon | Created App icon from emojis to not use the default unity App icon | |
+| Cleanup | Cleanup of multiple readmes | |
 
 #### Notes / Next Steps: 
-- 
+- Full single player game is complete and releasable. 
 
 ---
 
@@ -17,9 +23,8 @@
 
 | Actions | Goals | Problems |
 | ------  | ----- | -------- |
-
-#### Notes / Next Steps: 
-- 
+| Gameplay: Standardized UI | Modified UI to make it more standardized around the app.  Switched to similar layout constraints and modified text to be standardized in size, font, and capitalization  |  |
+| Deployment: UI for different device sizes | Got deployment to work on multiple devices (iPhone 6S, iPhone XR, iPad) and got dynamic screen sizes to be reasonable | |
 
 ---
 
