@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using UnityEngine.UI;
 using System.ComponentModel;
 public class UILogicController : MonoBehaviour
@@ -217,7 +218,7 @@ public class UILogicController : MonoBehaviour
     string buttonName = clickedObject.name;
     if (buttonName == "SinglePlayerButton")
     {
-      SwitchCanvas(UILogicController.PagesEnum.SetupPage);
+      SwitchCanvas(UILogicController.PagesEnum.InstructionsPage);
       if (Application.platform == RuntimePlatform.IPhonePlayer)
       {
         GameObject.Find("AR Session").GetComponent<ARKitCoachingOverlay>().ActivateCoaching(true);
@@ -251,6 +252,31 @@ public class UILogicController : MonoBehaviour
 
   }
 
+  public void InstructionsPageClick(GameObject clickedObject) {
+    const int MAX_SPRITE_NUM = 3;
+    const int MIN_SPRITE_NUM = 1;
+    string buttonName = clickedObject.name;
+    if (buttonName == "InstructionsCloseButton")
+    {
+      SwitchCanvas(UILogicController.PagesEnum.LandingPage);
+    } else if (buttonName=="RightArrow") {
+      string name = AssetDatabase.GetAssetPath(GameObject.Find("InstructionsImage").GetComponent<Image>().sprite);
+      Debug.Log(name);
+      string[] splits = name.Split('-');
+      string new_name = Mathf.Min(int.Parse(splits[1].Replace(".png", "")) + 1, MAX_SPRITE_NUM).ToString();
+      new_name = splits[0] + "-" + new_name + ".png";
+      Debug.Log(new_name);
+      GameObject.Find("InstructionsImage").GetComponent<Image>().sprite = (Sprite)AssetDatabase.LoadAssetAtPath(new_name, typeof(Sprite)); 
+    } else if (buttonName=="LeftArrow") {
+      string name = AssetDatabase.GetAssetPath(GameObject.Find("InstructionsImage").GetComponent<Image>().sprite);
+      Debug.Log(name);
+      string[] splits = name.Split('-');
+      string new_name = Mathf.Max(int.Parse(splits[1].Replace(".png", "")) - 1, MIN_SPRITE_NUM).ToString();
+      new_name = splits[0] + "-" + new_name + ".png";
+      Debug.Log(new_name);
+      GameObject.Find("InstructionsImage").GetComponent<Image>().sprite = (Sprite)AssetDatabase.LoadAssetAtPath(new_name, typeof(Sprite)); 
+    }
+  }
   public void SettingsPageClick(GameObject clickedObject)
   {
     string buttonName = clickedObject.name;
@@ -259,7 +285,6 @@ public class UILogicController : MonoBehaviour
       string name = GameObject.Find("SettingsPageName").GetComponent<InputField>().text;
       PlayerPrefs.SetString("name", name);
       PlayerPrefs.Save();
-      Debug.Log(PlayerPrefs.GetString("name"));
       SwitchCanvas(UILogicController.PagesEnum.LandingPage);
     }
     else if (buttonName == "SettingsNameInputField")
