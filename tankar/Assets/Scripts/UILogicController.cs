@@ -270,6 +270,10 @@ public class UILogicController : MonoBehaviour
     {
 
     }
+    else if (buttonName == "CreditsButton")
+    {
+      Application.OpenURL("https://averylamp.me/credits.txt");
+    }
     else if (buttonName == "SettingsPageMusicButton")
     {
 
