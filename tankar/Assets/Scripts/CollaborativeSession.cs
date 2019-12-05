@@ -13,8 +13,6 @@ public class CollaborativeSession : MonoBehaviour
     [Tooltip("The name for this network service. It should be 15 characters or less and can contain ASCII, lowercase letters, numbers, and hyphens.")]
     string m_ServiceType;
 
-    private static ILogger logger = Debug.unityLogger;
-
     /// <summary>
     /// The name for this network service.
     /// See <a href="https://developer.apple.com/documentation/multipeerconnectivity/mcnearbyserviceadvertiser">MCNearbyServiceAdvertiser</a>
@@ -31,7 +29,7 @@ public class CollaborativeSession : MonoBehaviour
     void DisableNotSupported(string reason)
     {
         enabled = false;
-        logger.Log(reason);
+        Logger.Log(reason);
     }
 
     void OnEnable()
@@ -88,7 +86,7 @@ public class CollaborativeSession : MonoBehaviour
         {
             using (var collaborationData = subsystem.DequeueCollaborationData())
             {
-                // CollaborationNetworkingIndicator.NotifyHasCollaborationData();
+                CollaborationNetworkingIndicator.NotifyHasCollaborationData();
 
                 if (m_MCSession.ConnectedPeerCount == 0)
                     continue;
@@ -100,12 +98,12 @@ public class CollaborativeSession : MonoBehaviour
                         ? MCSessionSendDataMode.Reliable
                         : MCSessionSendDataMode.Unreliable);
 
-                    // CollaborationNetworkingIndicator.NotifyOutgoingDataSent();
+                    CollaborationNetworkingIndicator.NotifyOutgoingDataSent();
 
                     // Only log 'critical' data as 'optional' data tends to come every frame
                     if (collaborationData.priority == ARCollaborationDataPriority.Critical)
                     {
-                        logger.Log($"Sent {data.Length} bytes of collaboration data.");
+                        Logger.Log($"Sent {data.Length} bytes of collaboration data.");
                     }
                 }
             }
@@ -114,7 +112,7 @@ public class CollaborativeSession : MonoBehaviour
         // Check for incoming data
         while (m_MCSession.ReceivedDataQueueSize > 0)
         {
-            // CollaborationNetworkingIndicator.NotifyIncomingDataReceived();
+            CollaborationNetworkingIndicator.NotifyIncomingDataReceived();
 
             using (var data = m_MCSession.DequeueReceivedData())
             using (var collaborationData = new ARCollaborationData(data.Bytes))
@@ -124,12 +122,12 @@ public class CollaborativeSession : MonoBehaviour
                     subsystem.UpdateWithCollaborationData(collaborationData);
                     if (collaborationData.priority == ARCollaborationDataPriority.Critical)
                     {
-                        logger.Log($"Received {data.Bytes.Length} bytes of collaboration data.");
+                        Logger.Log($"Received {data.Bytes.Length} bytes of collaboration data.");
                     }
                 }
                 else
                 {
-                    logger.Log($"Received {data.Bytes.Length} bytes from remote, but the collaboration data was not valid.");
+                    Logger.Log($"Received {data.Bytes.Length} bytes from remote, but the collaboration data was not valid.");
                 }
             }
         }
