@@ -1,5 +1,15 @@
 # TankAR Changelog
 
+---
+
+### Week of December 4
+
+| Actions | Goals | Problems |
+| ------  | ----- | -------- |
+| Gameplay: added settings page | We have no one to credit since we paid for all of our assets. | No problems occured. |
+
+#### Notes / Next Steps: 
+- 
 
 ---
 
