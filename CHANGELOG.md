@@ -2,11 +2,71 @@
 
 ---
 
+### Week of December 8
+
+| Actions | Goals | Problems |
+| ------  | ----- | -------- |
+
+#### Notes / Next Steps: 
+- 
+
+
+---
+
+### Week of December 1
+
+| Actions | Goals | Problems |
+| ------  | ----- | -------- |
+
+#### Notes / Next Steps: 
+- 
+
+
+---
+
+### Week of November 24
+
+| Actions | Goals | Problems |
+| ------  | ----- | -------- |
+| Gameplay: Persistent Settings | Persist settings throughout uses.  Allow users to change their settings and have the same saved settings when coming back and reopening the app.  |  |
+| Gameplay: Setup Field Changes | We wanted a more intuitive way to setup the field.  One change that was made was the ability to drag the field around in setup page instead of tapping multiple times to place it each time |  |
+| Gameplay: Multiplayer Screen (Viewer mode) | Added a multiplayer viewer mode screen with stubs for multipeer connectivity.  The screen displays logs and also shows that multiple devices connect.  It uses a static identifier for the room. | It has been difficult working with multipeer connectivity and syncing the world maps between screens |
+| Gameplay: Chicken Respawn animation | Added an animation for the chicken respawning in a new location.  Makes it more clear that the chicken just respawned and also makes it easier for the user to catch onto the direction of where the next chicken appears.  | |
+| Bug Fix: Removes arrow after game scene is active | The arrow projected into the augmented reality world was creating some collider issues and producing some unexpected behavior. | |
+
+#### Notes / Next Steps: 
+- The addition of multipeer connectivity and viewer mode poses some unique challenges.  Syncing the world map should be possible, but it hasn't been working.  Also syncing chicken animations throughout multipeer devices without it appearing jerky will be diffulcult.  
+
+---
+
+### Week of November 17
+
+| Actions | Goals | Problems |
+| ------  | ----- | -------- |
+| Gameplay: Chicken Response Proportionally to distance from human player | The chicken should not always be running at full speed.  It now speeds up to a maximum speed depending on how close the player is to the chicken.  Max(-2 * Log10(chickenDistance) + 1.75, 0f) + Variable increasing speed | Probably can use more tuning to increase variable speed and cap it. |
+| Gameplay: Improve the Chicken Direction Picker | The chicken often runs into fences and keeps running into fences.  Some work was done to prevent the chicken from running into fences as often. | Still needs tweaks to prevent the chicken from continuously running into a fence.  Does not actively avoid human still |
+| Gameplay: Landing Page | Created a landing page with the modes of play available, Single, Vieer, Settings, and Leaderboard | |
+| Gameplay: Settings Page | Created Settings page with name settings (name input field), music settings, fxs settings.  Toggleable and also name input for leaderboard |
+| Gameplay: Leaderboard Page | Simple leaderboard mock used currently with scores available. | Need to integrate data source, local or networked |
+| Gameplay: Setup Flow Page | Uses the standard plane finding tutorial available by Apple to standardize iconography for Augmented Reality plane finding | Need to add iconography/text explainations to help users understand how to place the field |
+| Gameplay: Game Music Player and Chicken FXs | Created a sound controller that is togglable and allows for playing sounds in specific moments as necessary for the game |  |
+| Gameplay: Confetti spawner integrated | Plays the confetti spawner when a chicken is caught/spawned and at end game.  Makes it more clear when a chicken is caught  |
+| Gameplay: Chicken Death Animation | After the chicken is caught, the death animation is played, making it clear that the chicken was caught | |
+
+#### Notes / Next Steps: 
+- Bug Discovered: Colliders in corner of fence do not prevent the chicken from escaping
+
+---
+
 ### Week of November 10
 
 | Actions | Goals | Problems |
 | ------  | ----- | -------- |
-| Gameplay: Chicken Speedup when respawn | 
+| Gameplay: Chicken Speedup when respawn | Game gets progressively harder as the user catches the chicken a couple of times | 
+| Gameplay: Catch button Turns Green | The Catch button changes color and becomes green when you are within range of the chicken and you can catch the chicken  | |
+| Gameplay: Range Detector | Make it more obvious when you are close to the chicken and exactly how close you have to be to the chicken in order. | |
+| Gameplay: Asset Set/Style | Picked an asset set that will allow us to create UI in a theme.  This asset set will be used in all parts of the app | |
+| Gameplay: Confetti spawner asset | Created a confetti spawner to used in certain situations to get the user's attention or display a change in AR | |
 
 #### Notes / Next Steps: 
 - 
