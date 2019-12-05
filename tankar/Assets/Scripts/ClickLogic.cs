@@ -129,6 +129,11 @@ public class ClickLogic : MonoBehaviour
           }
           break;
         }
+      case UILogicController.PagesEnum.InstructionsPage:
+      {
+        uiLogicController.InstructionsPageClick(lastClickedObject);
+        break;
+      }
       default: break;
     }
     lastClickedObject = null;
