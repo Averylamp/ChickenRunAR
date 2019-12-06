@@ -1,4 +1,4 @@
-# TankAR Bugs
+# Chicken Run AR Bugs
 
 Here we keep of a list of the current bugs. Note that we produced a strip down version of the code (no bugs) for the build, but we have an active branch that also contains bugs.
 
